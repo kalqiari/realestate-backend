@@ -2,12 +2,12 @@
 WAA Final Project
 
 ** Technologies:
-1- Spring boot.
-2- SMTP Server (Gmail).
-3- AWS S3.
-4- Keycloak.
-5- PostgreSQL. (AWS).
-6- RabbitMQ.
+- Spring boot.
+- SMTP Server (Gmail).
+- AWS S3.
+- Keycloak.
+- PostgreSQL. (AWS).
+- RabbitMQ.
 
 ** Main Controllers 
 - Admin
