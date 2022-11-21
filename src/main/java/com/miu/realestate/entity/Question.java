@@ -8,6 +8,6 @@ public class Question {
     private Long userId;
     private Long propertyId;
     private String content;
-    private Date createAt;
+    private Date createdAt;
 
 }
