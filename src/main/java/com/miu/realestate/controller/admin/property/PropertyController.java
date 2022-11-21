@@ -1,4 +1,4 @@
-package com.miu.realestate.controller.admin;
+package com.miu.realestate.controller.admin.property;
 
 import com.miu.realestate.entity.dto.PropertyDto;
 import com.miu.realestate.service.Impl.PropertyServiceImpl;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@RestController
 @RequestMapping("/api/v1/property")
 public class PropertyController {
 
@@ -25,7 +25,7 @@ public class PropertyController {
 
     @GetMapping
     public List<PropertyDto> getAll() {
-        return propertyService.getAll();
+        return null;
     }
 
     @GetMapping("/{id}")
@@ -41,7 +41,7 @@ public class PropertyController {
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable("id") Long id) {
-        //call service
+    public void update(@PathVariable("id") Long id, @RequestBody PropertyDto propertyDto) {
+       propertyService.update(id, propertyDto);
     }
 }
