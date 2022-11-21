@@ -20,18 +20,20 @@ public class UserServiceImpl implements UserService {
     ModelMapper modelMapper;
 
     @Override
-    public List<UserDto> findAll() {
+    public List<User> findAll() {
 
         var users = userRepo.findAll();
 
-        return users
-                .stream()
-                .map(user -> modelMapper.map(user, UserDto.class))
-                .collect(Collectors.toList());
+        return users;
     }
 
     @Override
-    public UserDto findById(Long id) {
+    public User findById(Long id) {
+        return userRepo.findById(id).get();
+    }
+
+    @Override
+    public UserDto findByIdDto(Long id) {
         return modelMapper.map(userRepo.findById(id), UserDto.class);
     }
 
@@ -42,6 +44,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(UserDto userDto) {
+        userRepo.save(modelMapper.map(userDto, User.class));
+    }
+
+    @Override
+    public void update(Long userId, UserDto userDto) {
+        userDto.setId(userId);
         userRepo.save(modelMapper.map(userDto, User.class));
     }
 }
