@@ -8,28 +8,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(("api"))
+@RequestMapping("api/v1/questions")
 public class QuestionController {
 
     @Autowired
     QuestionService questionService;
 
-    @GetMapping("/v1/questions")
+    @GetMapping("/")
     public List<QuestionDto> getQuestions() {
         return questionService.findAll();
     }
 
-    @GetMapping("/v1/questions/{id}")
+    @GetMapping("/{id}")
     public QuestionDto getQuestion(@PathVariable("id") Long id) {
         return questionService.findById(id);
     }
 
-    @PostMapping("/v1/questions")
+    @PostMapping("/")
     public void save(@RequestBody QuestionDto questionDto) {
         questionService.save(questionDto);
     }
 
-    @DeleteMapping("/v1/questions/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         questionService.deleteById(id);
     }
