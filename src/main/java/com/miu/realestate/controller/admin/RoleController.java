@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/v1/roles")
 public class RoleController {
 
     @Autowired
     RoleService roleService;
 
-    @GetMapping("/v1/roles")
+    @GetMapping("/")
     public List<RoleDto> getRoles(){
         return roleService.findAll();
     }
 
-    @GetMapping("/v1/role/{id}")
+    @GetMapping("/{id}")
     public RoleDto getRole(@PathVariable("id" ) Long id) {
         return roleService.findById(id);
     }
