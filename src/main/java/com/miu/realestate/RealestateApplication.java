@@ -1,9 +1,10 @@
 package com.miu.realestate;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.modelmapper.ModelMapper;
+
 
 @SpringBootApplication
 public class RealestateApplication {
@@ -13,7 +14,7 @@ public class RealestateApplication {
 	}
 
 	@Bean
-	public ModelMapper modelMapper() {
+	public ModelMapper modelMapper(){
 		return new ModelMapper();
 	}
 }
