@@ -37,8 +37,8 @@ public class ApplicationController {
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable("id") Long application_id) {
-        //call service
+    public void update(@PathVariable("id") Long application_id, @RequestBody ApplicationDto applicationDto) {
+        applicationService.update(application_id, applicationDto);
     }
 
 

@@ -16,4 +16,6 @@ public interface ApplicationService {
     ApplicationDto getById(Long application_id);
 
     List<ApplicationDto> getAll();
+
+    void update(Long id, ApplicationDto applicationDto);
 }

@@ -2,9 +2,15 @@ package com.miu.realestate.entity.dto;
 
 import com.miu.realestate.entity.ApplicationType;
 import com.miu.realestate.entity.ReviewStatus;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ApplicationDto {
     private Long application_id;
     private Long property_id;
