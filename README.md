@@ -1,5 +1,4 @@
-# realestate-backend
-WAA Final Project
+# Real Estate Backend (WAA Final Project)
 
 ## Technologies:
 - Spring boot.
