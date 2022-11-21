@@ -7,29 +7,29 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("api")
+@RequestMapping("api/v1/favorites")
 @RestController
 public class FavoriteController {
 
     @Autowired
     FavoriteService favoriteService;
 
-    @GetMapping("/v1/favorites")
+    @GetMapping("/")
     public List<FavoriteDto> getFavorites() {
         return favoriteService.findAll();
     }
 
-    @GetMapping("/v1/users/{id}")
+    @GetMapping("/{id}")
     public FavoriteDto getFavorite(@PathVariable("id") Long id) {
         return favoriteService.findByPropertyId(id);
     }
 
-    @PostMapping("/v1/users")
+    @PostMapping("/")
     public void save(@RequestBody FavoriteDto favoriteDto) {
         favoriteService.save(favoriteDto);
     }
 
-    @DeleteMapping("/v1/users/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         favoriteService.deleteById(id);
     }
