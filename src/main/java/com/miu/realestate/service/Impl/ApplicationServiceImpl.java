@@ -1,5 +1,4 @@
 package com.miu.realestate.service.Impl;
-
 import com.miu.realestate.entity.Application;
 import com.miu.realestate.entity.dto.ApplicationDto;
 import com.miu.realestate.repository.ApplicationRepo;
@@ -7,7 +6,6 @@ import com.miu.realestate.service.ApplicationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,6 +36,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public List<ApplicationDto> getAll() {
 
+
         List<Application> applications = applicationRepo.findAll();
         return applications
                 .stream()
@@ -47,8 +46,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void update(Long id, ApplicationDto applicationDto) {
-
         applicationDto.setApplicationId(id);
         applicationRepo.save(modelMapper.map(applicationDto, Application.class));
+
     }
 }

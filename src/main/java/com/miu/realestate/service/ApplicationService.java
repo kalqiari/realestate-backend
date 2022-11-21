@@ -6,12 +6,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Service
 public interface ApplicationService {
 
-   public void save(ApplicationDto p);
+    void save(ApplicationDto p);
 
-   public void delete(Long application_id);
+    void delete(Long application_id);
 
     ApplicationDto getById(Long application_id);
 

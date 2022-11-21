@@ -12,6 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApplicationDto {
+
     private Long applicationId;
     private Long propertyId;
     private Long userId;
@@ -23,4 +24,5 @@ public class ApplicationDto {
     private Date createdAt;
     private Date reviewedAt;
     private Date deletedAt;
+
 }
