@@ -1,8 +1,13 @@
-package com.miu.realestate.entity;
+package com.miu.realestate.entity.dto.response;
 
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class User {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserDto {
 
     private Long id;
     private String firstName;
@@ -14,11 +19,4 @@ public class User {
     private String city;
     private String state;
     private Integer zipcode;
-
-    private Date deactivate_at;
-    private Date create_at;
-    private Date deleted_at;
-
-    private Integer role_id;
-
 }
