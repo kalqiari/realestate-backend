@@ -1,21 +1,10 @@
-package com.miu.realestate.entity;
+package com.miu.realestate.entity.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Date;
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-public class Property {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PropertyDto {
     private Long id;
     private Long owner_id;
     private String street_address;
@@ -38,5 +27,4 @@ public class Property {
     private boolean is_built_complete;
     private Date listed_at;
     private Date deleted_at;
-
 }
