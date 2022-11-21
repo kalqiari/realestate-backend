@@ -1,7 +1,7 @@
 # realestate-backend
 WAA Final Project
 
-** Technologies:
+## Technologies:
 - Spring boot.
 - SMTP Server (Gmail).
 - AWS S3.
@@ -9,66 +9,66 @@ WAA Final Project
 - PostgreSQL. (AWS).
 - RabbitMQ.
 
-** Main Controllers 
-- Admin
-  -- Users 
-  -- Propperty
-  -- Report
-- Owner
-  -- Propperty 
-  -- Application 
-  -- Questions 
-- Customer
-  -- Propperty 
-  -- Favorites
-  -- Questions 
-  -- Application
-- Viewer
-  -- Propperty
+## Main Controllers 
+- ### Admin
+  - Users 
+  - Property
+  - Report
+- ### Owner
+  - Property 
+  - Application 
+  - Question 
+- ### Customer
+  - Property 
+  - Favorite
+  - Question 
+  - Application
+- ### Viewer
+  - Property
 
-** Logging 
+## Logging 
  - All post, put and delete actions
 
-** Mailers 
- - Submit Appliaction Email for Owner.
+## Mailers 
+ - Submit Application Email for Owner.
  - Question Email.
 
 
-** Database
+# Database 
 - User 
 - Role
-- Propperty
+- Property
 - Question 
 - Favorite
 - Application
 - Photo
 
 
-** User: 
+### User: 
  - id
  - First Name
  - Last Name
  - email 
  - phone number
- - street addres 
- - addres2
+ - street address 
+ - address2
  - city 
  - state
  - zipcode
  - role_id
- - deactived_at
+ - deactivated_at
  - created_at
  - deleted_at
 
-** Role
+### Role
   - id
   - name
  
-** Propperty
+### Property
  - id
  - owner_id
- - street addres 
- - addres2
+ - street_address 
+ - address2
  - city 
  - state
  - zipcode
@@ -78,7 +78,7 @@ WAA Final Project
  - home_type
  - sqFT 
  - bedrooms 
- - pathrooms
+ - bathrooms
  - pool (true, false)
  - parking_type ["Open", "Closed"]
  - parking_spaces [Number]
@@ -88,28 +88,28 @@ WAA Final Project
  - listed_at
  - deleted_at
 
-** Photo
+### Photo
  - id 
  - url
- - propperty_id
+ - property_id
  - deleted_at
 
-** Question 
+### Question 
  - id
  - user_id
- - propperty_id
+ - property_id
  - content
  - created_at
 
-** Favorite
+### Favorite
  - id 
  - user_id
- - propperty_id
+ - property_id
  - created_at
 
-** Application 
+### Application 
  - id
- - propperty_id
+ - property_id
  - user_id 
  - application_type ["Buy", "Rent", "Tour"]
  - employment_info
@@ -117,7 +117,7 @@ WAA Final Project
  - message
  - schedule_date
  - review_status ["Approved", "Rejected", "UnderReview"],
- - dropd_at 
+ - dropped_at 
  - created_at
  - reviewed_at
  - deleted_at 
