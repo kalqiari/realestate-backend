@@ -1,5 +1,6 @@
 package com.miu.realestate.controller.admin;
 
+import com.miu.realestate.entity.User;
 import com.miu.realestate.entity.dto.response.UserDto;
 import com.miu.realestate.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,13 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/v1/users")
-    public List<UserDto> getUsers() {
+    public List<User> getUsers() {
         return userService.findAll();
     }
 
     @GetMapping("/v1/users/{id}")
     public UserDto getUser(@PathVariable("id") Long id){
-        return userService.findById(id);
+        return userService.findByIdDto(id);
 
     }
 
@@ -33,5 +34,10 @@ public class UserController {
     @DeleteMapping("/v1/users/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         userService.deleteById(id);
+    }
+
+    @PutMapping("/v1/users/{id}")
+    public void update(@PathVariable("id") Long userId, @RequestBody UserDto userDto) {
+        userService.update(userId, userDto);
     }
 }
