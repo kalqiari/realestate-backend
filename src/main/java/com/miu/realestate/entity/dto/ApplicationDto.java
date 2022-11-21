@@ -1,5 +1,7 @@
-package com.miu.realestate.entity;
+package com.miu.realestate.entity.dto;
 
+import com.miu.realestate.entity.ApplicationType;
+import com.miu.realestate.entity.ReviewStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,8 +11,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Application {
-
+public class ApplicationDto {
     private Long application_id;
     private Long property_id;
     private Long user_id;
@@ -22,5 +23,4 @@ public class Application {
     private Date created_at;
     private Date reviewed_at;
     private Date deleted_at;
-
 }
