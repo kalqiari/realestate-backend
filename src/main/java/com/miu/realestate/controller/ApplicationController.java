@@ -1,6 +1,6 @@
 package com.miu.realestate.controller;
 
-import com.miu.realestate.entity.dto.ApplicationDto;
+import com.miu.realestate.entity.dto.response.ApplicationDto;
 import com.miu.realestate.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

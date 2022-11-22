@@ -20,25 +20,25 @@ public class KeycloakAdminConfig {
 
     public  KeycloakAdminConfig() {}
 
-        public static Keycloak getInstance() {
-            if(keycloak == null){
-
-                keycloak = KeycloakBuilder.builder()
-                        .serverUrl(serverUrl)
-                        .realm(realm)
-                        .grantType(OAuth2Constants.PASSWORD)
-                        .username(userName)
-                        .password(password)
-                        .clientId(clientId)
-                        .clientSecret(clientSecret)
-                        .resteasyClient(new ResteasyClientBuilder()
-                                .connectionPoolSize(10)
-                                .build()
-                        )
-                        .build();
-            }
-            return keycloak;
-        }
+//        public static Keycloak getInstance() {
+//            if(keycloak == null){
+//
+//                keycloak = KeycloakBuilder.builder()
+//                        .serverUrl(serverUrl)
+//                        .realm(realm)
+//                        .grantType(OAuth2Constants.PASSWORD)
+//                        .username(userName)
+//                        .password(password)
+//                        .clientId(clientId)
+//                        .clientSecret(clientSecret)
+//                        .resteasyClient(new ResteasyClientBuilder()
+//                                .connectionPoolSize(10)
+//                                .build()
+//                        )
+//                        .build();
+//            }
+//            return keycloak;
+//        }
 
 
 
