@@ -16,7 +16,7 @@ public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long owner_id;
+//    private Long owner_id;
     private String street_address;
     private String address2;
     private String city;
