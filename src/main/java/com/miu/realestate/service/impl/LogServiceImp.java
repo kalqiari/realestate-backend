@@ -1,6 +1,6 @@
 package com.miu.realestate.service.impl;
 
-import com.miu.realestate.dto.LogDto;
+import com.miu.realestate.entity.dto.LogDto;
 import com.miu.realestate.entity.Log;
 import com.miu.realestate.repo.LogRepo;
 import com.miu.realestate.service.LogService;

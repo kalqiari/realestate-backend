@@ -1,4 +1,4 @@
-package com.miu.realestate.dto;
+package com.miu.realestate.entity.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

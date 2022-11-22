@@ -1,6 +1,6 @@
 package com.miu.realestate.aspect;
 
-import com.miu.realestate.dto.LogDto;
+import com.miu.realestate.entity.dto.LogDto;
 import com.miu.realestate.service.LogService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
