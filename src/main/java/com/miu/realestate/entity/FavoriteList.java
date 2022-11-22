@@ -18,10 +18,10 @@ public class FavoriteList {
     private Long id;
     private String listName;
 
-    @ManyToMany
-    List<User> users;
-
-    @ManyToMany
-    List<Property> properties;
+//    @ManyToMany
+//    List<User> users;
+//
+//    @ManyToMany
+//    List<Property> properties;
 
 }

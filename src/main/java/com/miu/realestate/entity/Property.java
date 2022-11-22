@@ -40,17 +40,17 @@ public class Property {
 
 
     @ManyToOne
-    private User landlord;
+    private User owner;
 
 
-    @OneToMany
+    @OneToMany(mappedBy = "property")
     List<Photo> photos;
 
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "properties")
     List<Favorite> favoriteList;
 
-    @OneToMany
+    @OneToMany(mappedBy = "property")
     List<Question> questions;
 
 }

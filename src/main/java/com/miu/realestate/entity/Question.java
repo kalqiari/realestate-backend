@@ -24,9 +24,9 @@ public class Question {
     private String content;
     private LocalDate createdAt;
 
-    @OneToMany
-    List<User> users;
+    @ManyToOne
+    User user;
 
-    @OneToMany
-    List<Property> properties;
+    @ManyToOne
+    Property property;
 }
