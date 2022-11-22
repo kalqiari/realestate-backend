@@ -18,5 +18,5 @@ public class UserDto {
     private String address2;
     private String city;
     private String state;
-    private Integer zipcode;
+    private String zipcode;
 }
