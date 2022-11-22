@@ -1,4 +1,4 @@
-package com.miu.realestate.repository;
+package com.miu.realestate.repo;
 
 import com.miu.realestate.entity.Property;
 import org.springframework.data.jpa.repository.JpaRepository;

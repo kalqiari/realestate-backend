@@ -2,7 +2,7 @@ package com.miu.realestate.service.Impl;
 
 import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.dto.PropertyDto;
-import com.miu.realestate.repository.PropertyRepo;
+import com.miu.realestate.repo.PropertyRepo;
 import com.miu.realestate.service.PropertyService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

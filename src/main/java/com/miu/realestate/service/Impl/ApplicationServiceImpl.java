@@ -1,12 +1,12 @@
 package com.miu.realestate.service.Impl;
 import com.miu.realestate.entity.Application;
 import com.miu.realestate.entity.dto.ApplicationDto;
-import com.miu.realestate.repository.ApplicationRepo;
+import com.miu.realestate.repo.ApplicationRepo;
 import com.miu.realestate.service.ApplicationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Collections;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
