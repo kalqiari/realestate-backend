@@ -19,8 +19,8 @@ public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long userId;
-    private Long propertyId;
+//    private Long userId;
+//    private Long propertyId;
     private Date createAt;
 
     @ManyToMany

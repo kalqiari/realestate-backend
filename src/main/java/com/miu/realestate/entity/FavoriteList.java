@@ -18,4 +18,5 @@ public class FavoriteList {
 
     @ManyToMany
     List<Property> properties;
+
 }
