@@ -1,7 +1,6 @@
 package com.miu.realestate.service;
 
-import com.miu.realestate.entity.dto.PropertyDto;
-import org.springframework.stereotype.Service;
+import com.miu.realestate.entity.dto.response.PropertyDto;
 
 import java.util.List;
 

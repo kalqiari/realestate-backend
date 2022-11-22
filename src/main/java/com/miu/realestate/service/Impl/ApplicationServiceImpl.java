@@ -1,6 +1,6 @@
 package com.miu.realestate.service.Impl;
 import com.miu.realestate.entity.Application;
-import com.miu.realestate.entity.dto.ApplicationDto;
+import com.miu.realestate.entity.dto.response.ApplicationDto;
 import com.miu.realestate.repo.ApplicationRepo;
 import com.miu.realestate.service.ApplicationService;
 import org.modelmapper.ModelMapper;
