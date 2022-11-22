@@ -1,11 +1,16 @@
 package com.miu.realestate.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class FavoriteList {
 
     @Id
@@ -13,10 +18,10 @@ public class FavoriteList {
     private Long id;
     private String listName;
 
-    @ManyToMany
-    List<User> users;
-
-    @ManyToMany
-    List<Property> properties;
+//    @ManyToMany
+//    List<User> users;
+//
+//    @ManyToMany
+//    List<Property> properties;
 
 }

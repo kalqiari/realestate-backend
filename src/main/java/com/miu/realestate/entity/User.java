@@ -10,6 +10,8 @@ import java.util.List;
 
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Table(name = "users")
 public class User {
@@ -17,7 +19,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String firstName;
     private String lastName;
     private String email;
@@ -36,16 +37,16 @@ public class User {
     @OneToMany
     List<Role> roles;
 
-    @OneToMany(mappedBy = "landlord")
+    @OneToMany(mappedBy = "owner")
     List<Property> properties;
 
-    @OneToMany
-    List<Application> applications;
+    @OneToMany(mappedBy = "property")
+    List<Application> customerApplications;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "users")
     List<Favorite> favoriteList;
 
-    @OneToMany
-    List<Question> Question;
+    @OneToMany(mappedBy = "user")
+    List<Question> customerQuestion;
 
 }
