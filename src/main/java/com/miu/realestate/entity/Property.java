@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -38,5 +37,20 @@ public class Property {
     private boolean is_built_complete;
     private Date listed_at;
     private Date deleted_at;
+
+
+    @ManyToOne
+    private User landlord;
+
+
+    @OneToMany
+    List<Photo> photos;
+
+
+    @ManyToMany
+    List<Favorite> favoriteList;
+
+    @OneToMany
+    List<Question> question;
 
 }

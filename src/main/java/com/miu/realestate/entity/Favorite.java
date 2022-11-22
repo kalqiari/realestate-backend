@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Data
@@ -21,4 +22,10 @@ public class Favorite {
     private Long userId;
     private Long propertyId;
     private Date createAt;
+
+    @ManyToMany
+    List<User> users;
+
+    @ManyToMany
+    List<Property> properties;
 }

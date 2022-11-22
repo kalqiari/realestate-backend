@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -20,6 +22,11 @@ public class Question {
     private Long userId;
     private Long propertyId;
     private String content;
-    private Date createdAt;
+    private LocalDate createdAt;
 
+    @OneToMany
+    List<User> users;
+
+    @OneToMany
+    List<Property> properties;
 }

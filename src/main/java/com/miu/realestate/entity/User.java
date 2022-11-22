@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -31,6 +32,20 @@ public class User {
     private Date create_at;
     private Date deleted_at;
 
-    private Integer role_id;
+
+    @OneToMany
+    List<Role> roles;
+
+    @OneToMany(mappedBy = "landlord")
+    List<Property> properties;
+
+    @OneToMany
+    List<Application> applications;
+
+    @ManyToMany
+    List<Favorite> favoriteList;
+
+    @OneToMany
+    List<Question> Question;
 
 }

@@ -20,4 +20,7 @@ public class Photo {
     private String url;
     private Long propertyId;
     private Date deletedAt;
+
+    @ManyToOne
+    Property property;
 }
