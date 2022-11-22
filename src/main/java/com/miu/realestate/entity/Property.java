@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +16,7 @@ public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long owner_id;
+//    private Long owner_id;
     private String street_address;
     private String address2;
     private String city;
@@ -38,5 +37,20 @@ public class Property {
     private boolean is_built_complete;
     private Date listed_at;
     private Date deleted_at;
+
+
+    @ManyToOne
+    private User owner;
+
+
+    @OneToMany(mappedBy = "property")
+    List<Photo> photos;
+
+
+    @ManyToMany(mappedBy = "properties")
+    List<Favorite> favoriteList;
+
+    @OneToMany(mappedBy = "property")
+    List<Question> questions;
 
 }

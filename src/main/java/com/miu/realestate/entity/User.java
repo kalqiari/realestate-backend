@@ -6,9 +6,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Table(name = "users")
 public class User {
@@ -16,7 +19,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String firstName;
     private String lastName;
     private String email;
@@ -31,6 +33,20 @@ public class User {
     private Date create_at;
     private Date deleted_at;
 
-    private Integer role_id;
+
+    @OneToMany
+    List<Role> roles;
+
+    @OneToMany(mappedBy = "owner")
+    List<Property> properties;
+
+    @OneToMany(mappedBy = "property")
+    List<Application> customerApplications;
+
+    @ManyToMany(mappedBy = "users")
+    List<Favorite> favoriteList;
+
+    @OneToMany(mappedBy = "user")
+    List<Question> customerQuestion;
 
 }

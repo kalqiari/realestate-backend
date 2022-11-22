@@ -5,22 +5,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "photos")
-public class Photo {
+public class FavoriteList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String url;
-//    private Long propertyId;
-    private Date deletedAt;
+    private String listName;
 
-    @ManyToOne
-    Property property;
+//    @ManyToMany
+//    List<User> users;
+//
+//    @ManyToMany
+//    List<Property> properties;
+
 }
