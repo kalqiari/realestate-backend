@@ -20,12 +20,12 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    private Integer phoneNumber;
+    private String phoneNumber;
     private String streetAddress;
     private String address2;
     private String city;
     private String state;
-    private Integer zipcode;
+    private String zipcode;
 
     private Date deactivate_at;
     private Date create_at;
