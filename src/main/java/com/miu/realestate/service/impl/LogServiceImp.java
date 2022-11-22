@@ -1,4 +1,4 @@
-package com.miu.realestate.service.impl;
+package com.miu.realestate.service.Impl;
 
 import com.miu.realestate.entity.dto.LogDto;
 import com.miu.realestate.entity.Log;
@@ -10,8 +10,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LogServiceImp implements LogService {
+
+    private LogRepo logRepo;
+
     @Autowired
-    LogRepo logRepo;
+    public LogServiceImp( LogRepo logRepo){
+        this.logRepo = logRepo;
+    }
 
     @Autowired
     ModelMapper modelMapper;

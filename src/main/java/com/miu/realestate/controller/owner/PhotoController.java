@@ -11,8 +11,11 @@ import java.util.List;
 @RequestMapping("api/v1/photos")
 public class PhotoController {
 
+    private PhotoService photoService;
     @Autowired
-    PhotoService photoService;
+    public PhotoController(PhotoService photoService){
+        this.photoService = photoService;
+    }
 
     @GetMapping("/")
     public List<PhotoDto> getPhotos() {

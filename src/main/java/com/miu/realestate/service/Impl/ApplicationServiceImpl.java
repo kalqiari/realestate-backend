@@ -13,8 +13,13 @@ import java.util.stream.Collectors;
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
 
-    @Autowired
     private ApplicationRepo applicationRepo;
+
+    @Autowired
+    public ApplicationServiceImpl( ApplicationRepo applicationRepo){
+        this.applicationRepo = applicationRepo;
+    }
+
 
     @Autowired
     private ModelMapper modelMapper;

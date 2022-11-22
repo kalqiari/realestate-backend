@@ -13,8 +13,11 @@ import java.util.stream.Collectors;
 @Service
 public class PropertyServiceImpl implements PropertyService {
 
-    @Autowired
     private PropertyRepo propertyRepo;
+    @Autowired
+    public PropertyServiceImpl( PropertyRepo propertyRepo){
+        this.propertyRepo = propertyRepo;
+    }
 
     @Autowired
     ModelMapper modelMapper;

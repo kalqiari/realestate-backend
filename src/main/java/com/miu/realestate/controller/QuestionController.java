@@ -17,7 +17,7 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public List<QuestionDto> getQuestions() {
         return questionService.findAll();
     }
@@ -27,7 +27,7 @@ public class QuestionController {
         return questionService.findById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping()
     public void save(@RequestBody QuestionDto questionDto) {
         questionService.save(questionDto);
     }

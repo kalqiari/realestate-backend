@@ -1,4 +1,4 @@
-package com.miu.realestate.service.impl;
+package com.miu.realestate.service.Impl;
 
 import com.miu.realestate.entity.Question;
 import com.miu.realestate.entity.dto.response.QuestionDto;
@@ -14,8 +14,12 @@ import java.util.stream.Collectors;
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
+    private QuestionRepo questionRepo;
+
     @Autowired
-    QuestionRepo questionRepo;
+    public QuestionServiceImpl(QuestionRepo questionRepo){
+        this.questionRepo =questionRepo;
+    }
 
     @Autowired
     ModelMapper modelMapper;
