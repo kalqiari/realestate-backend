@@ -51,6 +51,6 @@ public class Property {
     List<Favorite> favoriteList;
 
     @OneToMany
-    List<Question> question;
+    List<Question> questions;
 
 }

@@ -39,12 +39,12 @@ public class User {
     List<Property> properties;
 
     @OneToMany
-    List<Application> applications;
+    List<Application> customerApplications;
 
     @ManyToMany
     List<Favorite> favoriteList;
 
     @OneToMany
-    List<Question> Question;
+    List<Question> customerQuestion;
 
 }
