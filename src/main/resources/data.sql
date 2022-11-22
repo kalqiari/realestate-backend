@@ -65,8 +65,7 @@ VALUES(32, 11, 309, 'Oops! never mind, i am not interested anymore...', 13/5/202
 
 --PROPERTY
 INSERT INTO property(id, ownerId, streetAddress, address2, city, state, zipcode, listingType,description, price, homeType, sqFt, bedrooms, bathrooms, pool, parkingType, parkingSpaces, floorType, yearBuilt,isBuiltComplete, listedAt, deletedAt )
-VALUES(642, 1110, '236W 1st St','Curry Lane','Beverly Hills', 'California', '230089', '')
+VALUES(642, 1110, '236W 1st St','Curry Lane','Beverly Hills', 'California', '230089', 'Sale','beautiful mansion by the sea',43000000, 'mansion', 180056.92,10, 13, true, 'open parking space', 6, 'wood', 01/7/1990, true, 19/4/2020, 00/00/000 )
 
 INSERT INTO property(id, ownerId, streetAddress, address2, city, state, zipcode, listingType,description, price, homeType, sqFt, bedrooms, bathrooms, pool, parkingType, parkingSpaces, floorType, yearBuilt,isBuiltComplete, listedAt, deletedAt )
-VALUES()
-
+VALUES(642, 1110, '2316N 1st St','KKK Lane','Beverly Hills', 'California', '230089', 'Sale','beautiful mansion by the sea',12000000, 'mansion', 81056.09,8, 9.5, true, 'open parking space', 3, 'wood', 01/7/2000, true, 23/6/2022, 00/00/000 )
