@@ -1,22 +1,18 @@
-package com.miu.realestate.entity;
+package com.miu.realestate.entity.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 @Data
-@Entity
-public class Log {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+@NoArgsConstructor
+public class LogDto {
     long id;
     private String principal;
     private String operation;
     private String endPoint;
     private String method;
     private LocalDateTime requestTime;
-    @Column(columnDefinition = "TEXT")
     private String params;
 }

@@ -1,4 +1,4 @@
-package com.miu.realestate.controller.admin;
+package com.miu.realestate.controller;
 
 import com.miu.realestate.entity.dto.response.QuestionDto;
 import com.miu.realestate.service.QuestionService;
@@ -10,9 +10,12 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/questions")
 public class QuestionController {
+    private QuestionService questionService;
 
     @Autowired
-    QuestionService questionService;
+    public QuestionController(QuestionService questionService) {
+        this.questionService = questionService;
+    }
 
     @GetMapping("/")
     public List<QuestionDto> getQuestions() {

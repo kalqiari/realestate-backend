@@ -1,6 +1,5 @@
-package com.miu.realestate.controller.admin;
+package com.miu.realestate.controller;
 
-import com.miu.realestate.entity.Application;
 import com.miu.realestate.entity.dto.ApplicationDto;
 import com.miu.realestate.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/applications")
 public class ApplicationController {
-    @Autowired
+
     private  ApplicationService applicationService;
+    @Autowired
+    public ApplicationController(ApplicationService applicationService) {
+        this.applicationService = applicationService;
+    }
 
     @PostMapping
     public void save(@RequestBody ApplicationDto applicationDto) {
@@ -40,6 +43,5 @@ public class ApplicationController {
     public void update(@PathVariable("id") Long application_id, @RequestBody ApplicationDto applicationDto) {
         applicationService.update(application_id, applicationDto);
     }
-
 
 }
