@@ -22,7 +22,7 @@ public class FavoriteServiceImpl implements FavoriteService {
 
     @Override
     public List<FavoriteDto> findAll() {
-        var favorite = favoriteRepo.findAll();
+        List<Favorite> favorite = favoriteRepo.findAll();
         return favorite
                 .stream()
                 .map(fav -> modelMapper.map(fav, FavoriteDto.class) )
