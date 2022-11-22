@@ -1,6 +1,6 @@
 package com.miu.realestate.service;
 
-import com.miu.realestate.entity.dto.ApplicationDto;
+import com.miu.realestate.entity.dto.response.ApplicationDto;
 
 import java.util.List;
 

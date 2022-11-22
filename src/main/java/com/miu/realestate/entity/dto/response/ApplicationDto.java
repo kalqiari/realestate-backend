@@ -1,4 +1,4 @@
-package com.miu.realestate.entity.dto;
+package com.miu.realestate.entity.dto.response;
 
 import com.miu.realestate.entity.ApplicationType;
 import com.miu.realestate.entity.ReviewStatus;
