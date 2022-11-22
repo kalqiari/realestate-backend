@@ -31,3 +31,41 @@ INSERT INTO LOG (id, principal, operation, endPoint, method, requestTime, params
 VALUES (2,  'umur' , 'getById', 'findById', 'sample', 11:00, 12 );
 
 
+
+-- USERS
+
+INSERT INTO users (id, firstName,lastName,email,phoneNumber,streetAddress,address2,city,state,zipcode,deactivate_at,create_at,deleted_at)
+VALUES (011, 'umur', 'inan', 'uinan@miu.edu','(641)-123490','1000N 4th Street','FairwayApartments','Chicago', 'Illinois','53901',00/00/0000,12/12/2022,0/00/0000 );
+
+INSERT INTO users (id, firstName,lastName,email,phoneNumber,streetAddress,address2,city,state,zipcode,deactivate_at,create_at,deleted_at)
+VALUES (012,'john', 'doe', 'john@miu.edu','(800)-891901','124E 10th Street','Mansion Lane', 'Fairfield','Iowa','52557',00/00/0000, 23/3/2019, 00/00/0000);
+
+INSERT INTO users (id, firstName, lastName, email, phoneNumber, streetAddress, address2, city, state, zipcode, deactivate_at, create_at, deleted_at, role_id)
+VALUES (1234, 'Keven', 'prince', 'keven@miu.edu', 'miu', 'fairfield', 'fairfield', 'iowa', 'US', 52557, 0, 0, 0 );
+
+INSERT INTO users (id, firstName, lastName, email, phoneNumber, streetAddress, address2, city, state, zipcode, deactivate_at, create_at, deleted_at, role_id)
+VALUES (1235, 'Keven', 'prince', 'keven@miu.edu', 'miu', 'fairfield', 'fairfield', 'iowa', 'US', 52557, 0, 0, 0 );
+
+INSERT INTO users (id, firstName, lastName, email, phoneNumber, streetAddress, address2, city, state, zipcode, deactivate_at, create_at, deleted_at, role_id)
+VALUES (1236, 'Keven', 'prince', 'keven@miu.edu', 'miu', 'fairfield', 'fairfield', 'iowa', 'US', 52557, 0, 0, 0 );
+
+--ROLE
+INSERT INTO role (id, name)
+VALUES(11, 'User')
+
+INSERT INTO role (id, name)
+VALUES(12, 'Admin')
+
+--QUESTION
+INSERT INTO role (id,userId, propertyId, content, createdAt)
+VALUES(22, 11, 309, 'can i pass by on Wednesday afternoon to tour the apartment?',12/5/2022)
+
+INSERT INTO role (id,userId, propertyId, content, createdAt)
+VALUES(32, 11, 309, 'Oops! never mind, i am not interested anymore...', 13/5/2022)
+
+--PROPERTY
+INSERT INTO property(id, ownerId, streetAddress, address2, city, state, zipcode, listingType,description, price, homeType, sqFt, bedrooms, bathrooms, pool, parkingType, parkingSpaces, floorType, yearBuilt,isBuiltComplete, listedAt, deletedAt )
+VALUES(642, 1110, '236W 1st St','Curry Lane','Beverly Hills', 'California', '230089', 'Sale','beautiful mansion by the sea',43000000, 'mansion', 180056.92,10, 13, true, 'open parking space', 6, 'wood', 01/7/1990, true, 19/4/2020, 00/00/000 )
+
+INSERT INTO property(id, ownerId, streetAddress, address2, city, state, zipcode, listingType,description, price, homeType, sqFt, bedrooms, bathrooms, pool, parkingType, parkingSpaces, floorType, yearBuilt,isBuiltComplete, listedAt, deletedAt )
+VALUES(642, 1110, '2316N 1st St','KKK Lane','Beverly Hills', 'California', '230089', 'Sale','beautiful mansion by the sea',12000000, 'mansion', 81056.09,8, 9.5, true, 'open parking space', 3, 'wood', 01/7/2000, true, 23/6/2022, 00/00/000 )

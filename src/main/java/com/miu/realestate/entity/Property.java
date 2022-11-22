@@ -16,36 +16,32 @@ public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    private Long owner_id;
-    private String street_address;
+    private String streetAddress;
     private String address2;
     private String city;
     private String state;
     private String zipcode;
-    private String listing_type;
+    private String listingType;
     private String description;
     private double price;
-    private String home_type;
+    private String homeType;
     private double sqFt;
     private int bedrooms;
     private double bathrooms;
     private boolean pool;
-    private String parking_type;
-    private int parking_spaces;
+    private String parkingType;
+    private int parkingSpaces;
     private String floorType;
-    private Date year_built;
-    private boolean is_built_complete;
-    private Date listed_at;
-    private Date deleted_at;
-
+    private Date yearBuilt;
+    private boolean isBuiltComplete;
+    private Date listedAt;
+    private Date deletedAt;
 
     @ManyToOne
     private User owner;
 
-
     @OneToMany(mappedBy = "property")
     List<Photo> photos;
-
 
     @ManyToMany(mappedBy = "properties")
     List<Favorite> favoriteList;

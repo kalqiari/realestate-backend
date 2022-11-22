@@ -16,17 +16,14 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long applicationId;
-//    private Long propertyId;
-//    private Long userId;
-    private ApplicationType applicationType;
+    private String applicationType;
     private String employmentInfo;
     private double creditScore;
-    private ReviewStatus reviewStatus;
+    private String reviewStatus;
     private LocalDate droppedAt;
     private LocalDate createdAt;
     private LocalDate reviewedAt;
     private LocalDate deletedAt;
-
 
     @ManyToOne
     User user;
