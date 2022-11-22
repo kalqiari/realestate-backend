@@ -1,4 +1,4 @@
-package com.miu.realestate.controller.admin.property;
+package com.miu.realestate.controller;
 
 import com.miu.realestate.entity.dto.PropertyDto;
 import com.miu.realestate.service.Impl.PropertyServiceImpl;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/property")
+@RequestMapping("/api/v1/properties")
 public class PropertyController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class PropertyController {
 
     @GetMapping
     public List<PropertyDto> getAll() {
-        return null;
+        return propertyService.getAll();
     }
 
     @GetMapping("/{id}")
@@ -33,8 +33,7 @@ public class PropertyController {
         var property = propertyService.getById(id);
         return ResponseEntity.ok(property);
     }
-
-
+    
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         propertyService.delete(id);

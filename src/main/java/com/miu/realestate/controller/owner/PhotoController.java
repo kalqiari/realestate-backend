@@ -1,4 +1,4 @@
-package com.miu.realestate.controller.admin;
+package com.miu.realestate.controller.owner;
 
 import com.miu.realestate.entity.dto.response.PhotoDto;
 import com.miu.realestate.service.PhotoService;

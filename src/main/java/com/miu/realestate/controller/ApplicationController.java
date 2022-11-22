@@ -1,4 +1,4 @@
-package com.miu.realestate.controller.admin;
+package com.miu.realestate.controller;
 
 import com.miu.realestate.entity.Application;
 import com.miu.realestate.entity.dto.ApplicationDto;
