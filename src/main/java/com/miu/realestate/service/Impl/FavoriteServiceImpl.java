@@ -14,8 +14,11 @@ import java.util.stream.Collectors;
 @Service
 public class FavoriteServiceImpl implements FavoriteService {
 
+    private FavoriteRepo favoriteRepo;
     @Autowired
-    FavoriteRepo favoriteRepo;
+    public FavoriteServiceImpl(FavoriteRepo favoriteRepo){
+        this.favoriteRepo = favoriteRepo;
+    }
 
     @Autowired
     ModelMapper modelMapper;
