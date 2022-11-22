@@ -4,15 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 @Table(name = "question")
 public class Question {
 

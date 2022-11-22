@@ -5,9 +5,10 @@ import com.miu.realestate.repository.ApplicationRepo;
 import com.miu.realestate.service.ApplicationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ApplicationServiceImpl implements ApplicationService {
 
     @Autowired

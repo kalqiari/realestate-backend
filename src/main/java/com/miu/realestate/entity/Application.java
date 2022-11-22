@@ -4,12 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Application {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     private Long application_id;
     private Long property_id;
@@ -22,5 +28,13 @@ public class Application {
     private Date created_at;
     private Date reviewed_at;
     private Date deleted_at;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 }
