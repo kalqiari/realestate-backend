@@ -27,6 +27,7 @@ public class RealestateApplication {
 		return new ModelMapper();
 	}
 
+
 	@Bean
 	@Scope(scopeName = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
 	public AccessToken getAccessToken() {

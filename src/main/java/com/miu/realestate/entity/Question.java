@@ -11,13 +11,15 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "photos")
-public class Photo {
+@Table(name = "question")
+public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String url;
+    private Long userId;
     private Long propertyId;
-    private Date deletedAt;
+    private String content;
+    private Date createdAt;
+
 }

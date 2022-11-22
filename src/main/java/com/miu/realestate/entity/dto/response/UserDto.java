@@ -1,22 +1,15 @@
-package com.miu.realestate.entity;
+package com.miu.realestate.entity.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.Date;
-
-
-@Entity
 @Data
-@Table(name = "users")
-public class User {
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String firstName;
     private String lastName;
     private String email;
@@ -26,11 +19,4 @@ public class User {
     private String city;
     private String state;
     private Integer zipcode;
-
-    private Date deactivate_at;
-    private Date create_at;
-    private Date deleted_at;
-
-    private Integer role_id;
-
 }
