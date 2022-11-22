@@ -10,8 +10,11 @@ import java.util.List;
 @RestController
 public class FavoriteController {
 
+    private  FavoriteService favoriteService;
     @Autowired
-    FavoriteService favoriteService;
+    public FavoriteController( FavoriteService favoriteService){
+        this.favoriteService = favoriteService;
+    }
 
     @GetMapping()
     public List<FavoriteDto> getFavorites() {
