@@ -16,7 +16,7 @@ public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    private Long owner_id;
+    // private Long owner_id;
     private String street_address;
     private String address2;
     private String city;
@@ -38,14 +38,11 @@ public class Property {
     private Date listed_at;
     private Date deleted_at;
 
-
     @ManyToOne
     private User owner;
 
-
     @OneToMany(mappedBy = "property")
     List<Photo> photos;
-
 
     @ManyToMany(mappedBy = "properties")
     List<Favorite> favoriteList;

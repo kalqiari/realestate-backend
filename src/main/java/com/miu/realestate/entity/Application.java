@@ -16,8 +16,6 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long applicationId;
-//    private Long propertyId;
-//    private Long userId;
     private ApplicationType applicationType;
     private String employmentInfo;
     private double creditScore;
@@ -26,7 +24,6 @@ public class Application {
     private LocalDate createdAt;
     private LocalDate reviewedAt;
     private LocalDate deletedAt;
-
 
     @ManyToOne
     User user;

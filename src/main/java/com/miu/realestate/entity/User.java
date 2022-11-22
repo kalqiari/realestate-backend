@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,7 +31,6 @@ public class User {
     private Date deactivate_at;
     private Date create_at;
     private Date deleted_at;
-
 
     @OneToMany
     List<Role> roles;
