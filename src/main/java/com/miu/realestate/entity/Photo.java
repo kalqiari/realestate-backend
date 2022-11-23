@@ -18,8 +18,8 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String url;
-//    private Long propertyId;
     private Date deletedAt;
+    private String keyName;
 
     @ManyToOne
     Property property;

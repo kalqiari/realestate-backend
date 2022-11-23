@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,5 +55,14 @@ public class ApplicationServiceImpl implements ApplicationService {
         applicationDto.setApplicationId(id);
         applicationRepo.save(modelMapper.map(applicationDto, Application.class));
 
+    }
+
+    @Override
+    public List<ApplicationDto> findAllByCreatedAt(LocalDate submittedAt) {
+        List<Application> applications = applicationRepo.findAllByCreatedAt(submittedAt);
+        return applications
+                .stream()
+                .map(application -> modelMapper.map(application, ApplicationDto.class))
+                .collect(Collectors.toList());
     }
 }

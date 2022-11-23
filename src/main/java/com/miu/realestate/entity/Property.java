@@ -58,19 +58,4 @@ public class Property {
     @OneToMany(mappedBy = "property")
     List<Question> questions;
 
-
-    @ManyToOne
-    private User landlord;
-
-
-    @OneToMany
-    List<Photo> photos;
-
-
-    @ManyToMany
-    List<Favorite> favoriteList;
-
-    @OneToMany
-    List<Question> question;
-
 }

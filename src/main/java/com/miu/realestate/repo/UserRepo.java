@@ -7,6 +7,8 @@ import java.util.List;
 
 
 public interface UserRepo extends CrudRepository<User, Long> {
+    User findUserByEmailIs(String email);
+
     List<User> findTop10ByRoleEqualsOrderByAccountCreatedAtDesc(String role);
 
     List<User> findAll();

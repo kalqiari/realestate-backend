@@ -1,12 +1,15 @@
 package com.miu.realestate.service.Impl;
 
 import com.miu.realestate.entity.Property;
+import com.miu.realestate.entity.User;
 import com.miu.realestate.entity.dto.response.PropertyDto;
 import com.miu.realestate.entity.dto.response.UserDto;
 import com.miu.realestate.repo.PropertyRepo;
+import com.miu.realestate.repo.UserRepo;
 import com.miu.realestate.service.PropertyService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
@@ -16,9 +19,13 @@ import java.util.stream.Collectors;
 public class PropertyServiceImpl implements PropertyService {
 
     private PropertyRepo propertyRepo;
+
+    UserRepo userRepo;
+
     @Autowired
-    public PropertyServiceImpl( PropertyRepo propertyRepo){
+    public PropertyServiceImpl( PropertyRepo propertyRepo, UserRepo userRepo){
         this.propertyRepo = propertyRepo;
+        this.userRepo = userRepo;
     }
 
     @Autowired
@@ -27,6 +34,11 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public void save(PropertyDto propertyDto) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepo.findUserByEmailIs(username);
+        Property property = modelMapper.map(propertyDto,Property.class);
+        property.setOwner(user);
+        property.setStatus("Available");
         propertyRepo.save(modelMapper.map(propertyDto,Property.class));
     }
 
