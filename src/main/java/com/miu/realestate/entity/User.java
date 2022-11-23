@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -28,9 +29,9 @@ public class User {
     private String state;
     private String zipcode;
 
-    private Date deactivate_at;
-    private Date create_at;
-    private Date deleted_at;
+    private LocalDate deactivate_at;
+    private LocalDate create_at;
+    private LocalDate deleted_at;
 
     @OneToMany
     List<Role> roles;

@@ -16,7 +16,7 @@ public class Log {
     private String operation;
     private String endPoint;
     private String method;
-    private LocalDateTime requestTime;
+//    private LocalDateTime requestTime;
     @Column(columnDefinition = "TEXT")
     private String params;
 }
