@@ -16,7 +16,6 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long applicationId;
-
     private String applicationType;
     private String employmentInfo;
     private double creditScore;

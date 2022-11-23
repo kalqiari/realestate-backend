@@ -33,6 +33,7 @@ public class Property {
     private String parkingType;
     private int parkingSpaces;
     private String floorType;
+    private String status;
 
     @JsonFormat(pattern="dd/MM/yyyy")
     private Date yearBuilt;

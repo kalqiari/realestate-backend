@@ -28,7 +28,7 @@ public class User {
     private String city;
     private String state;
     private String zipcode;
-
+    private boolean activeStatus;
     private LocalDate deactivate_at;
     private LocalDate create_at;
     private LocalDate deleted_at;

@@ -1,5 +1,6 @@
 package com.miu.realestate.controller;
 
+import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.dto.response.PropertyDto;
 import com.miu.realestate.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +33,17 @@ public class PropertyController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PropertyDto> getById(@PathVariable Long id) {
-        var property = propertyService.getById(id);
-        return ResponseEntity.ok(property);
+    public PropertyDto getById(@PathVariable Long id) {
+        return propertyService.getById(id);
     }
 
     @PreAuthorize("hasRole('OWNER')")
     @DeleteMapping("/{id}")
     public void unList(@PathVariable Long id) {
-        propertyService.delete(id);
+        PropertyDto property = getById(id);
+        if(property!=null && !(property.getStatus().equalsIgnoreCase("pending"))){
+            propertyService.delete(id);
+        }
     }
 
     @PreAuthorize("hasRole('OWNER')")

@@ -27,4 +27,5 @@ public class PropertyDto {
     private boolean is_built_complete;
     private Date listed_at;
     private Date deleted_at;
+    private String status;
 }
