@@ -13,4 +13,9 @@ public interface PropertyService {
     public void update(Long id, PropertyDto propertyDto);
 
 
+    List<PropertyDto> findAllByNoOfBedRoom(int noOfRoom);
+
+    List<PropertyDto> findAllByAddressStateAndAddressCity(String state, String city);
+
+    List<PropertyDto> findAllByPropertyType(String type);
 }

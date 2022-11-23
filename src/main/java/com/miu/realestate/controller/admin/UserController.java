@@ -5,6 +5,7 @@ import com.miu.realestate.entity.User;
 import com.miu.realestate.entity.dto.response.UserDto;
 import com.miu.realestate.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,5 +44,11 @@ public class UserController {
     @PutMapping("/{id}")
     public void update(@PathVariable("id") Long userId, @RequestBody UserDto userDto) {
         userService.update(userId, userDto);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/top10RecentCustomers")
+    public List<User>findRecentCustomers(){
+        return userService.findTop10RecentCustomers();
     }
 }
