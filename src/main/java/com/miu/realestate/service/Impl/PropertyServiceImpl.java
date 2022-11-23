@@ -40,14 +40,6 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public PropertyDto getById(Long id) {
-        List<Property> properties = propertyRepo.findAll();
-        return properties
-                .stream()
-                .map(p -> modelMapper.map(p, PropertyDto.class))
-                .filter(p -> p.getId() ==id)
-                .findFirst()
-                .orElse(null);
-
        return modelMapper.map(propertyRepo.findById(id), PropertyDto.class);
     }
 
