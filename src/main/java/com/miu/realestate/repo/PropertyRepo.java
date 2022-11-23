@@ -10,12 +10,14 @@ import java.util.List;
 
 @Repository
 public interface PropertyRepo extends JpaRepository<Property, Long> {
+
+    List<Property> findAll();
     List<Property> findAllByNoOfBedRoom(int noOfRoom);
 
     List<Property> findAllByAddressStateAndAddressCity(String state);
 
     List<Property> findAllByPropertyType(String type);
 
-    List<Property> findAll();
+
 
 }
