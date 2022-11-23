@@ -23,11 +23,15 @@ public class Question {
     // private Long propertyId;
     private String content;
     private LocalDate createdAt;
-
     @ManyToOne
     User user;
 
     @ManyToOne
     Property property;
 
+    @OneToMany
+    List<User> users;
+
+    @OneToMany
+    List<Property> properties;
 }
