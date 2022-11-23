@@ -44,4 +44,9 @@ public class UserController {
     public void update(@PathVariable("id") Long userId, @RequestBody UserDto userDto) {
         userService.update(userId, userDto);
     }
+
+    @GetMapping("/top10RecentCustomers")
+    public List<User>findRecentCustomers(){
+        return userService.findTop10RecentCustomers();
+    }
 }

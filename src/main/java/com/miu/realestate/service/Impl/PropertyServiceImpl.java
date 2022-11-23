@@ -36,8 +36,8 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public PropertyDto getById(Long id) {
-        List<Property> posts = propertyRepo.findAll();
-        return posts
+        List<Property> properties = propertyRepo.findAll();
+        return properties
                 .stream()
                 .map(p -> modelMapper.map(p, PropertyDto.class))
                 .filter(p -> p.getId() ==id)
@@ -50,7 +50,7 @@ public class PropertyServiceImpl implements PropertyService {
         List<Property> properties = propertyRepo.findAll();
         return properties
                 .stream()
-                .map(post -> modelMapper.map(post,PropertyDto.class))
+                .map(property -> modelMapper.map(property, PropertyDto.class))
                 .collect(Collectors.toList());
     }
 
@@ -85,5 +85,4 @@ public class PropertyServiceImpl implements PropertyService {
                 .map(post -> modelMapper.map(post,PropertyDto.class))
                 .collect(Collectors.toList());
     }
-
 }

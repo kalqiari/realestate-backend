@@ -1,6 +1,7 @@
 package com.miu.realestate.service.Impl;
 
 import com.miu.realestate.entity.User;
+import com.miu.realestate.entity.dto.response.PropertyDto;
 import com.miu.realestate.entity.dto.response.UserDto;
 import com.miu.realestate.repo.UserRepo;
 import com.miu.realestate.service.UserService;
@@ -54,5 +55,15 @@ public class UserServiceImpl implements UserService {
     public void update(Long userId, UserDto userDto) {
         userDto.setId(userId);
         userRepo.save(modelMapper.map(userDto, User.class));
+    }
+
+    @Override
+    public List<User> findTop10RecentCustomers() {
+        List<User> users = userRepo.findTop10ByRoleEqualsOrderByAccountCreatedAtDesc("CUSTOMER");
+//        return users
+//                .stream()
+//                .map(user -> modelMapper.map(user, UserDto.class))
+//                .collect(Collectors.toList());
+        return null;
     }
 }

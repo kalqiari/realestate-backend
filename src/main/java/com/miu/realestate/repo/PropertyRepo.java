@@ -16,4 +16,6 @@ public interface PropertyRepo extends JpaRepository<Property, Long> {
 
     List<Property> findAllByPropertyType(String type);
 
+    List<Property> findAll();
+
 }

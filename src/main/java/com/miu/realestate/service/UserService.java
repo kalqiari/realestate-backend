@@ -20,4 +20,6 @@ public interface UserService {
     void save(UserDto userDto);
 
     void update(Long userId, UserDto userDto);
+
+    List<User> findTop10RecentCustomers();
 }
