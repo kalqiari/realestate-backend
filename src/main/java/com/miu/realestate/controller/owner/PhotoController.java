@@ -1,9 +1,10 @@
 package com.miu.realestate.controller.owner;
 
-import com.miu.realestate.entity.dto.response.PhotoDto;
 import com.miu.realestate.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class PhotoController {
         this.photoService = photoService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<PhotoDto> getPhotos() {
         return photoService.findAll();
     }
@@ -27,9 +28,10 @@ public class PhotoController {
         return photoService.findById(id);
     }
 
+    @PreAuthorize("hasRole('OWNER')")
     @PostMapping("/")
-    public void save(@RequestBody PhotoDto photoDto) {
-        photoService.save(photoDto);
+    public void upload(@RequestPart("files") List<MultipartFile> files) throws Exception {
+        photoService.save(files);
     }
 
     @DeleteMapping("/{id}")

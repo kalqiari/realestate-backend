@@ -2,6 +2,7 @@ package com.miu.realestate.service;
 
 import com.miu.realestate.entity.dto.response.ApplicationDto;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -16,4 +17,6 @@ public interface ApplicationService {
     List<ApplicationDto> getAll();
 
     void update(Long id, ApplicationDto applicationDto);
+
+    List<ApplicationDto> findAllByCreatedAt(LocalDate submittedAt);
 }

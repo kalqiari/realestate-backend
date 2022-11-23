@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -44,6 +45,9 @@ public class ApplicationController {
         applicationService.update(application_id, applicationDto);
     }
 
-
+    @GetMapping("/filterBySubmissionDate")
+    public List<ApplicationDto> findAllByCreatedAt(@RequestParam("submittedAt")LocalDate submittedAt) {
+        return applicationService.findAllByCreatedAt(submittedAt);
+    }
 
 }
