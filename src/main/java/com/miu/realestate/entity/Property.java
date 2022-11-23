@@ -1,5 +1,6 @@
 package com.miu.realestate.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,9 +33,16 @@ public class Property {
     private String parkingType;
     private int parkingSpaces;
     private String floorType;
+
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date yearBuilt;
+
     private boolean isBuiltComplete;
+
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date listedAt;
+
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date deletedAt;
 
     @ManyToOne
