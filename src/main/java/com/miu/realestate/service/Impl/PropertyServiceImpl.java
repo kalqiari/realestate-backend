@@ -1,6 +1,7 @@
 package com.miu.realestate.service.Impl;
 
 import com.miu.realestate.entity.Property;
+import com.miu.realestate.entity.User;
 import com.miu.realestate.entity.dto.response.PropertyDto;
 import com.miu.realestate.entity.dto.response.UserDto;
 import com.miu.realestate.repo.PropertyRepo;
@@ -19,13 +20,13 @@ public class PropertyServiceImpl implements PropertyService {
 
     private PropertyRepo propertyRepo;
 
-    @Autowired
-    public PropertyServiceImpl( PropertyRepo propertyRepo){
-        this.propertyRepo = propertyRepo;
-    }
+    UserRepo userRepo;
 
     @Autowired
-    UserRepo userRepo;
+    public PropertyServiceImpl( PropertyRepo propertyRepo, UserRepo userRepo){
+        this.propertyRepo = propertyRepo;
+        this.userRepo = userRepo;
+    }
 
     @Autowired
     ModelMapper modelMapper;
@@ -34,7 +35,7 @@ public class PropertyServiceImpl implements PropertyService {
     @Override
     public void save(PropertyDto propertyDto) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        var user = UserRepo.findByEmail(username);
+        User user = userRepo.findUserByEmailIs(username);
         Property property = modelMapper.map(propertyDto,Property.class);
         property.setOwner(user);
         property.setStatus("Available");

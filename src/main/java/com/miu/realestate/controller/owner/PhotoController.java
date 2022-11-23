@@ -1,5 +1,6 @@
 package com.miu.realestate.controller.owner;
 
+import com.miu.realestate.entity.Photo;
 import com.miu.realestate.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,12 +20,12 @@ public class PhotoController {
     }
 
     @GetMapping
-    public List<PhotoDto> getPhotos() {
+    public List<Photo> getPhotos() {
         return photoService.findAll();
     }
 
     @GetMapping("/{id}")
-    public PhotoDto getPhoto(@PathVariable("id") Long id) {
+    public Photo getPhoto(@PathVariable("id") Long id) {
         return photoService.findById(id);
     }
 
