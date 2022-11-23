@@ -31,11 +31,13 @@ public class UserController {
         return userService.findByIdDto(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping()
     public void save(@RequestBody UserDto userDto) {
         userService.save(userDto);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         userService.deleteById(id);
