@@ -45,4 +45,20 @@ public class PropertyController {
     public void update(@PathVariable("id") Long id, @RequestBody PropertyDto propertyDto) {
        propertyService.update(id, propertyDto);
     }
+
+    @GetMapping("/filterPropertyByNoOfRooms")
+    public List<PropertyDto> findAllByNoOfBedRoom(@RequestParam int noOfRoom){
+        return propertyService.findAllByNoOfBedRoom(noOfRoom);
+    }
+
+    @GetMapping("/filterPropertyByAddress")
+    public List<PropertyDto> findAllByAddressStateAndAddressCity(@RequestParam(required = false) String state,
+                                                                                   @RequestParam(required = false) String city){
+        return propertyService.findAllByAddressStateAndAddressCity(state, city);
+    }
+
+    @GetMapping("/filterPropertyByType")
+    public List<PropertyDto> findAllByPropertyType(@RequestParam("type") String type){
+        return propertyService.findAllByPropertyType(type);
+    }
 }
