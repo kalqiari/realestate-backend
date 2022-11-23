@@ -4,7 +4,6 @@ import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.dto.response.PropertyDto;
 import com.miu.realestate.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +13,6 @@ import java.util.List;
 @RequestMapping("/api/v1/properties")
 public class PropertyController {
 
-
     private PropertyService propertyService;
 
     @Autowired
@@ -22,6 +20,7 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
+    @PreAuthorize("hasRole('OWNER')")
     @PostMapping
     public void save(@RequestBody PropertyDto propertyDto) {
        propertyService.save(propertyDto);
@@ -63,7 +62,6 @@ public class PropertyController {
     public List<PropertyDto> findAllByAddressStateAndAddressCity(@RequestParam(required = false) String state, @RequestParam(required = false) String city){
         return propertyService.findAllByAddressStateAndAddressCity(state, city);
     }
-
 
     @PreAuthorize("hasRoles('OWNER', 'CUSTOMER')")
     @GetMapping("/filterPropertyByType")

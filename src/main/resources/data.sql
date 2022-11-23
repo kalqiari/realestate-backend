@@ -1,10 +1,16 @@
 
 --ROLE
-INSERT INTO role (id, name)
-VALUES(11, 'User');
+INSERT INTO ROLE (id, name)
+VALUES(11, 'USER');
 
-INSERT INTO role (id, name)
-VALUES(12, 'Admin');
+INSERT INTO ROLE (id, name)
+VALUES(12, 'OWNER');
+
+INSERT INTO ROLE (id, name)
+VALUES(13, 'CUSTOMER');
+
+INSERT INTO ROLE (id, name)
+VALUES(14, 'ADMIN');
 
 
 -- USERS
