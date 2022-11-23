@@ -10,9 +10,11 @@ import java.util.List;
 public interface PropertyRepo extends CrudRepository<Property, Long> {
 
     List<Property> findAll();
+    
     List<Property> findAllByNoOfBedRoom(int noOfRoom);
 
     List<Property> findAllByAddressStateAndAddressCity(String state);
 
     List<Property> findAllByPropertyType(String type);
+
 }

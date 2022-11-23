@@ -2,6 +2,7 @@ package com.miu.realestate.service.Impl;
 
 import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.dto.response.PropertyDto;
+import com.miu.realestate.entity.dto.response.UserDto;
 import com.miu.realestate.repo.PropertyRepo;
 import com.miu.realestate.service.PropertyService;
 import org.modelmapper.ModelMapper;
@@ -31,7 +32,10 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public void delete(Long id) {
-       propertyRepo.deleteById(id);
+        PropertyDto property = getById(id);
+        if(property!=null && property.getStatus().equalsIgnoreCase("pending")) {
+            propertyRepo.deleteById(id);
+        }
     }
 
     @Override
@@ -43,6 +47,8 @@ public class PropertyServiceImpl implements PropertyService {
                 .filter(p -> p.getId() ==id)
                 .findFirst()
                 .orElse(null);
+
+       return modelMapper.map(propertyRepo.findById(id), PropertyDto.class);
     }
 
     @Override

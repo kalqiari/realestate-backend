@@ -71,6 +71,7 @@
  - city 
  - state
  - zipcode
+ - propertyStatus['sold', 'rented', 'pending']
  - listing_type ["Sale", "Rent"] 
  - description
  - price
