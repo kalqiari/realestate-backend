@@ -1,10 +1,11 @@
-package com.miu.realestate.entity.dto.response;
+package com.miu.realestate.entity.dto.request;
 
 import lombok.Data;
 
 import java.util.Date;
+
 @Data
-public class PropertyDto {
+public class PropertyRequestDto {
     private Long id;
     private Long owner_id;
     private String street_address;
@@ -27,6 +28,4 @@ public class PropertyDto {
     private boolean is_built_complete;
     private Date listed_at;
     private Date deleted_at;
-    private String status;
-
 }

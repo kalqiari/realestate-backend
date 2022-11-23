@@ -12,8 +12,6 @@ import java.util.Date;
 public class ApplicationDto {
 
     private Long applicationId;
-    private Long propertyId;
-    private Long userId;
     private String applicationType;
     private String employmentInfo;
     private double creditScore;
