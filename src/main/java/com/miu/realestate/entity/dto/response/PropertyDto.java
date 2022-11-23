@@ -28,5 +28,4 @@ public class PropertyDto {
     private Date listed_at;
     private Date deleted_at;
     private String status;
-
 }
