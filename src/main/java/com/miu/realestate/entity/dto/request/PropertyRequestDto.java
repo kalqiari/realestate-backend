@@ -7,7 +7,7 @@ import java.util.Date;
 @Data
 public class PropertyRequestDto {
     private Long id;
-    private Long owner_id;
+    private Long user_id;
     private String street_address;
     private String address2;
     private String city;

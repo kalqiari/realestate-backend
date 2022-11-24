@@ -13,10 +13,13 @@ import java.util.List;
 public interface ApplicationRepo extends CrudRepository<Application,Long> {
 
     List<Application> findAll();
-
+    
     List<Application> findAllByCreatedAt(LocalDate submittedAt);
 
     List<Application> findApplicationByProperty(Property property);
 
     List<Application> findApplicationByPropertyStateAndPropertyCity(String state, String city);
+
+    List<Application> findByCreatedAt(LocalDate submittedAt);
+
 }

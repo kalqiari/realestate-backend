@@ -53,14 +53,14 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void update(Long id, ApplicationDto applicationDto) {
-        applicationDto.setApplicationId(id);
+        applicationDto.setId(id);
         applicationRepo.save(modelMapper.map(applicationDto, Application.class));
 
     }
 
     @Override
     public List<ApplicationDto> findAllByCreatedAt(LocalDate submittedAt) {
-        List<Application> applications = applicationRepo.findAllByCreatedAt(submittedAt);
+        List<Application> applications = applicationRepo.findByCreatedAt(submittedAt);
         return applications
                 .stream()
                 .map(application -> modelMapper.map(application, ApplicationDto.class))

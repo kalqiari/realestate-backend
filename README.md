@@ -87,6 +87,7 @@
  - is_purchase_complete [Boolean]
  - listed_at
  - deleted_at
+ - soldRentedAt
 
 ### Photo
  - id 

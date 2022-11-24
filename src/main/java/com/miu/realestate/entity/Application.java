@@ -15,7 +15,7 @@ import java.util.Date;
 public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long applicationId;
+    private Long Id;
 
     private String applicationType;
     private String employmentInfo;

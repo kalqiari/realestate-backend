@@ -19,6 +19,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String username;
     private String firstName;
     private String lastName;
     private String email;
@@ -28,24 +29,29 @@ public class User {
     private String city;
     private String state;
     private String zipcode;
-    private boolean activeStatus;
-    private LocalDate deactivate_at;
-    private LocalDate create_at;
-    private LocalDate deleted_at;
+    private boolean status;
+    private LocalDate deactivateAt;
+    private LocalDate createdAt;
+    private LocalDate deletedAt;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    Role role;
 
     @OneToMany
-    List<Role> roles;
-
-    @OneToMany(mappedBy = "owner")
+    @JoinColumn(name = "user_id")
     List<Property> properties;
 
-    @OneToMany(mappedBy = "property")
-    List<Application> customerApplications;
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    List<Application>  applications;
 
-    @ManyToMany(mappedBy = "users")
-    List<Favorite> favoriteList;
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    List<Favorite> favorites;
 
-    @OneToMany(mappedBy = "user")
-    List<Question> customerQuestion;
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    List<Question> questions;
+
 
 }

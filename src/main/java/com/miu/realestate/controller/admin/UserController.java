@@ -62,6 +62,7 @@ public class UserController {
     public void update(@PathVariable("id") Long userId, @RequestBody UserDto userDto) {
         userService.update(userId, userDto);
     }
+
     @RolesAllowed("admin")
     @GetMapping("/top10RecentCustomers")
     public List<User>findRecentCustomers(){

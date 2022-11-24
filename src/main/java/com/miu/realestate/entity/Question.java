@@ -19,8 +19,6 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // private Long userId;
-    // private Long propertyId;
     private String content;
     private LocalDate createdAt;
     @ManyToOne
@@ -29,9 +27,4 @@ public class Question {
     @ManyToOne
     Property property;
 
-    @OneToMany
-    List<User> users;
-
-    @OneToMany
-    List<Property> properties;
 }

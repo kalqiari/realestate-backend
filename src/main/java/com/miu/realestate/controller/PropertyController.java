@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/v1/properties")
 public class PropertyController {
@@ -37,7 +37,8 @@ public class PropertyController {
         return propertyService.getById(id);
     }
 
-    @RolesAllowed( "owner")
+
+    @RolesAllowed("owner")
     @DeleteMapping("/{id}")
     public void unList(@PathVariable Long id) {
         PropertyDto property = getById(id);
@@ -46,19 +47,21 @@ public class PropertyController {
         }
     }
 
-    @RolesAllowed( "owner")
+
+    @RolesAllowed("owner")
     @PutMapping("/{id}")
     public void edit(@PathVariable("id") Long id, @RequestBody PropertyDto propertyDto) {
        propertyService.update(id, propertyDto);
     }
 
-    @RolesAllowed({"customer", "owner"})
+    @RolesAllowed({"owner", "customer"})
     @GetMapping("/filterPropertyByNoOfRooms")
     public List<PropertyDto> findAllByNoOfBedRoom(@RequestParam int noOfRoom){
         return propertyService.findAllByNoOfBedRoom(noOfRoom);
     }
+
     static int views = 0;
-    @RolesAllowed({"admin", "owner"})
+    @RolesAllowed({"owner", "customer"})
     @GetMapping("/filterPropertyByAddress")
     public List<PropertyDto> findAllByAddressStateAndAddressCity(@RequestParam(required = false) String state, @RequestParam(required = false) String city){
         views++;
@@ -70,7 +73,7 @@ public class PropertyController {
         return views;
     }
 
-    @RolesAllowed({"admin", "owner"})
+    @RolesAllowed({"owner", "customer"})
     @GetMapping("/filterPropertyByType")
     public List<PropertyDto> findAllByPropertyType(@RequestParam("type") String type){
         return propertyService.findAllByPropertyType(type);

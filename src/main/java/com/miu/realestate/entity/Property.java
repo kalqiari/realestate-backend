@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -53,13 +55,19 @@ public class Property {
     @ManyToOne
     private User owner;
 
-    @OneToMany(mappedBy = "property")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private User user;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name="property_id")
     List<Photo> photos;
 
-    @ManyToMany(mappedBy = "properties")
-    List<Favorite> favoriteList;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "property_id")
+    List<Favorite> favorites;
 
-    @OneToMany(mappedBy = "property")
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "property_id")
     List<Question> questions;
 
 }
