@@ -34,20 +34,24 @@ public class User {
     private LocalDate createdAt;
     private LocalDate deletedAt;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
+    @ManyToOne(fetch = FetchType.EAGER)
     Role role;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany
+    @JoinColumn(name = "user_id")
     List<Property> properties;
 
-    @OneToMany(mappedBy = "property")
-    List<Application> customerApplications;
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    List<Application>  applications;
 
-    @ManyToMany(mappedBy = "users")
-    List<Favorite> favoriteList;
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    List<Favorite> favorites;
 
-    @OneToMany(mappedBy = "user")
-    List<Question> customerQuestion;
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    List<Question> questions;
+
 
 }

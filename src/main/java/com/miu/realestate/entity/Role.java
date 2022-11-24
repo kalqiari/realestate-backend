@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,6 +19,7 @@ public class Role {
     private Long id;
     private String name;
 
-    @ManyToOne
-    User user;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name="role_id")
+    List<User> users;
 }

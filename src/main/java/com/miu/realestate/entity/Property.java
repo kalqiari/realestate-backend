@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -46,16 +48,19 @@ public class Property {
     @JsonFormat(pattern="dd/MM/yyyy")
     private Date deletedAt;
 
-    @ManyToOne
-    private User owner;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private User user;
 
-    @OneToMany(mappedBy = "property")
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name="property_id")
     List<Photo> photos;
 
-    @ManyToMany(mappedBy = "properties")
-    List<Favorite> favoriteList;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "property_id")
+    List<Favorite> favorites;
 
-    @OneToMany(mappedBy = "property")
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "property_id")
     List<Question> questions;
 
 }

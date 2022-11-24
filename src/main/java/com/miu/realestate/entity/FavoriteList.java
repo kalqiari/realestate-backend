@@ -17,9 +17,10 @@ public class FavoriteList {
     private Long id;
     private String listName;
 
-    @ManyToMany
-    List<User> users;
+    @ManyToOne
+    User user;
 
-    @ManyToMany
-    List<Property> properties;
+    @OneToMany
+    @JoinColumn(name = "favorite_list_id")
+    List<Favorite> favorites;
 }

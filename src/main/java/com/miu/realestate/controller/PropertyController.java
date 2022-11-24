@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/v1/properties")
 public class PropertyController {

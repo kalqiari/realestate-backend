@@ -19,13 +19,13 @@ public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    private Long userId;
-//    private Long propertyId;
     private Date createdAt;
+    @ManyToOne
+    User user;
 
-    @ManyToMany
-    List<User> users;
+    @ManyToOne
+    Property property;
 
-    @ManyToMany
-    List<Property> properties;
+    @ManyToOne
+    FavoriteList favoriteList;
 }

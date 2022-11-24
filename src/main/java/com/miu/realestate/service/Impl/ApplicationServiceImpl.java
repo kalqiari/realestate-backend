@@ -52,7 +52,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void update(Long id, ApplicationDto applicationDto) {
-        applicationDto.setApplicationId(id);
+        applicationDto.setId(id);
         applicationRepo.save(modelMapper.map(applicationDto, Application.class));
 
     }

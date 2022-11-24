@@ -37,7 +37,7 @@ public class PropertyServiceImpl implements PropertyService {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepo.findUserByEmailIs(username);
         Property property = modelMapper.map(propertyDto,Property.class);
-        property.setOwner(user);
+        property.setUser(user);
         property.setStatus("Available");
         propertyRepo.save(modelMapper.map(propertyDto,Property.class));
     }

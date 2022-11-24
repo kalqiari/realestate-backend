@@ -11,7 +11,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class ApplicationDto {
 
-    private Long applicationId;
+    private Long Id;
+    private long propertyId;
     private String applicationType;
     private String employmentInfo;
     private double creditScore;

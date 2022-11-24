@@ -22,7 +22,7 @@ public class ResourceServerConfig extends KeycloakWebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
         http.authorizeRequests().anyRequest().permitAll();
-        http.csrf().disable();
+        http.csrf().disable().cors();
     }
 
     @Autowired
