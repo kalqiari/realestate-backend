@@ -57,13 +57,18 @@ public class PropertyController {
     public List<PropertyDto> findAllByNoOfBedRoom(@RequestParam int noOfRoom){
         return propertyService.findAllByNoOfBedRoom(noOfRoom);
     }
-
+    static int views = 0;
     @RolesAllowed({"admin", "owner"})
     @GetMapping("/filterPropertyByAddress")
     public List<PropertyDto> findAllByAddressStateAndAddressCity(@RequestParam(required = false) String state, @RequestParam(required = false) String city){
+        views++;
         return propertyService.findAllByAddressStateAndAddressCity(state, city);
     }
-
+    @RolesAllowed({"owner"})
+    @GetMapping("/displayViewsByAddress")
+    public int displayViews(){
+        return views;
+    }
 
     @RolesAllowed({"admin", "owner"})
     @GetMapping("/filterPropertyByType")
@@ -76,5 +81,13 @@ public class PropertyController {
     @GetMapping("/findPropertyByPropertyStatus")
     public List<PropertyDto> findPropertyByPropertyStatus (@RequestParam("propertyStatus") String propertyStatus){
         return propertyService.findPropertyByPropertyStatus(propertyStatus);
+    }
+    @RolesAllowed({"customer", "owner"})
+    public List<PropertyDto> findPropertyByPrice(@RequestParam double price) {
+        return propertyService.findPropertyByPrice(price);
+    }
+    @RolesAllowed({"customer", "owner"})
+    public List<PropertyDto> findPropertyByHomeType(@RequestParam String homeType){
+        return propertyService.findPropertyByHomeType(homeType);
     }
 }

@@ -80,11 +80,15 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public List<PropertyDto> findAllByAddressStateAndAddressCity(String state, String city) {
+
         List<Property> properties = propertyRepo.findAllByAddressStateAndAddressCity(state);
+
+
         return properties
                 .stream()
                 .map(post -> modelMapper.map(post,PropertyDto.class))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()) ;
+
     }
 
     @Override
@@ -104,6 +108,24 @@ public class PropertyServiceImpl implements PropertyService {
                 .sorted((o1, o2) -> o2.getSoldRentedAt().compareTo(o1.getSoldRentedAt()))
                 .map(post -> modelMapper.map(post,PropertyDto.class))
                 .limit(10)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PropertyDto> findPropertyByPrice(double price) {
+        List<Property> properties = propertyRepo.findPropertyByPrice(price);
+        return properties
+                .stream()
+                .map(post -> modelMapper.map(post,PropertyDto.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PropertyDto> findPropertyByHomeType(String homeType) {
+        List<Property> properties = propertyRepo.findPropertyByHomeType(homeType);
+        return properties
+                .stream()
+                .map(post -> modelMapper.map(post,PropertyDto.class))
                 .collect(Collectors.toList());
     }
 }

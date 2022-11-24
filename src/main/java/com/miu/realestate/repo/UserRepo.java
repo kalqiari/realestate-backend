@@ -12,4 +12,6 @@ public interface UserRepo extends CrudRepository<User, Long> {
     List<User> findTop10ByRoleEqualsOrderByAccountCreatedAtDesc(String role);
 
     List<User> findAll();
+
+
 }

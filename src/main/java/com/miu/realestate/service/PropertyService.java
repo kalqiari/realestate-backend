@@ -20,4 +20,8 @@ public interface PropertyService {
 
     List<PropertyDto> findAllByPropertyType(String type);
     List <PropertyDto> findPropertyByPropertyStatus(String propertyStatus);
+
+    List <PropertyDto> findPropertyByPrice(double price);
+
+    List<PropertyDto> findPropertyByHomeType(String homeType);
 }
