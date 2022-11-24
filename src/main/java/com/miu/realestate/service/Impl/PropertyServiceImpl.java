@@ -1,4 +1,4 @@
-package com.miu.realestate.service.Impl;
+package com.miu.realestate.service.impl;
 
 import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.User;
@@ -71,7 +71,7 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     public List<PropertyDto> findAllByNoOfBedRoom(int noOfBedRoom) {
-        List<Property> properties = propertyRepo.findAllByNoOfBedRoom(noOfBedRoom);
+        List<Property> properties = propertyRepo.findByBedrooms(noOfBedRoom);
         return properties
                 .stream()
                 .map(post -> modelMapper.map(post,PropertyDto.class))
@@ -80,7 +80,7 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public List<PropertyDto> findAllByAddressStateAndAddressCity(String state, String city) {
-        List<Property> properties = propertyRepo.findAllByAddressStateAndAddressCity(state);
+        List<Property> properties = propertyRepo.findByStateAndCity(state, city);
         return properties
                 .stream()
                 .map(post -> modelMapper.map(post,PropertyDto.class))
@@ -89,7 +89,7 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public List<PropertyDto> findAllByPropertyType(String type) {
-        List<Property> properties = propertyRepo.findAllByPropertyType(type);
+        List<Property> properties = propertyRepo.findByHomeType(type);
         return properties
                 .stream()
                 .map(post -> modelMapper.map(post,PropertyDto.class))

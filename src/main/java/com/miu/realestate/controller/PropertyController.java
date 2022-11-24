@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
-    @PreAuthorize("hasRole('OWNER')")
+    @RolesAllowed("owner")
     @PostMapping
     public void save(@RequestBody PropertyDto propertyDto) {
        propertyService.save(propertyDto);
@@ -63,7 +64,7 @@ public class PropertyController {
         return propertyService.findAllByAddressStateAndAddressCity(state, city);
     }
 
-    @PreAuthorize("hasRoles('OWNER', 'CUSTOMER')")
+    @PreAuthorize("hasRoles('owner', 'customer')")
     @GetMapping("/filterPropertyByType")
     public List<PropertyDto> findAllByPropertyType(@RequestParam("type") String type){
         return propertyService.findAllByPropertyType(type);

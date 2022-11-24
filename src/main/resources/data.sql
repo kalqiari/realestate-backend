@@ -1,34 +1,40 @@
 
 --ROLE
-INSERT INTO ROLE (id, name)
-VALUES(11, 'USER');
+INSERT INTO ROLES (id, name)
+VALUES(1, 'admin');
 
-INSERT INTO ROLE (id, name)
-VALUES(12, 'OWNER');
+INSERT INTO ROLES (id, name)
+VALUES(2, 'owner');
 
-INSERT INTO ROLE (id, name)
-VALUES(13, 'CUSTOMER');
-
-INSERT INTO ROLE (id, name)
-VALUES(14, 'ADMIN');
+INSERT INTO ROLES (id, name)
+VALUES(3, 'customer');
 
 
 -- USERS
 
-INSERT INTO USERS (id, first_name,last_name,email,phone_number,street_address,address2,city,state,zipcode,deactivate_at,create_at,deleted_at)
-VALUES (011, 'umur', 'inan', 'uinan@miu.edu','(641)-123490','1000N 4th Street','FairwayApartments','Chicago', 'Illinois','53901','1990-10-01','1990-10-01', '1990-10-01' );
+INSERT INTO USERS (id,username, first_name,last_name,email,phone_number,street_address,address2,city,state,zipcode,deactivate_at,created_at,deleted_at, role_id, status)
+VALUES (1, 'admin', 'admin', 'admin', 'admin@email.com','(641)-123490','1000N 4th Street','FairwayApartments','Chicago', 'Illinois','53901','1990-10-01','1990-10-01', '1990-10-01', 1, true );
 
-INSERT INTO USERS (id, first_name,last_name,email,phone_number,street_address,address2,city,state,zipcode,deactivate_at,create_at,deleted_at)
-VALUES (012,'john', 'doe', 'john@miu.edu','(800)-891901','124E 10th Street','Mansion Lane', 'Fairfield','Iowa','52557','1990-10-01', '1990-10-01', '1990-10-01');
+INSERT INTO USERS (id,username, first_name,last_name,email,phone_number,street_address,address2,city,state,zipcode,deactivate_at,created_at,deleted_at, role_id, status)
+VALUES (2, 'owner', 'owner', 'owner', 'owner@email.com','(641)-123490','1000N 4th Street','FairwayApartments','Chicago', 'Illinois','53901','1990-10-01','1990-10-01', '1990-10-01', 2 , true);
 
-INSERT INTO USERS (id, first_name, last_name, email, phone_number, street_address, address2, city, state, zipcode, deactivate_at, create_at, deleted_at)
-VALUES (1234, 'Keven', 'prince', 'keven@miu.edu', 'miu', 'fairfield', 'fairfield', 'iowa', 'US', 52557, '1990-10-01', '1990-10-01', '1990-10-01');
+INSERT INTO USERS (id,username, first_name,last_name,email,phone_number,street_address,address2,city,state,zipcode,deactivate_at,created_at,deleted_at, role_id, status)
+VALUES (3, 'customer', 'customer', 'customer', 'customer@email.com','(641)-123490','1000N 4th Street','FairwayApartments','Chicago', 'Illinois','53901','1990-10-01','1990-10-01', '1990-10-01', 3 , true);
 
-INSERT INTO USERS (id, first_name, last_name, email, phone_number, street_address, address2, city, state, zipcode, deactivate_at, create_at, deleted_at)
-VALUES (1235, 'Keven', 'prince', 'keven@miu.edu', 'miu', 'fairfield', 'fairfield', 'iowa', 'US', 52557, '1990-10-01', '1990-10-01', '1990-10-01' );
+INSERT INTO USERS (id,username, first_name,last_name,email,phone_number,street_address,address2,city,state,zipcode,deactivate_at,created_at,deleted_at, status)
+VALUES (011, 'umur', 'umur', 'inan', 'uinan@miu.edu','(641)-123490','1000N 4th Street','FairwayApartments','Chicago', 'Illinois','53901','1990-10-01','1990-10-01', '1990-10-01', true );
 
-INSERT INTO USERS (id, first_name, last_name, email, phone_number, street_address, address2, city, state, zipcode, deactivate_at, create_at, deleted_at)
-VALUES (1236, 'Keven', 'prince', 'keven@miu.edu', 'miu', 'fairfield', 'fairfield', 'iowa', 'US', 52557, '1990-10-01', '1990-10-01', '1990-10-01' );
+INSERT INTO USERS (id,username,  first_name,last_name,email,phone_number,street_address,address2,city,state,zipcode,deactivate_at,created_at,deleted_at, status)
+VALUES (012,'john','john', 'doe', 'john@miu.edu','(800)-891901','124E 10th Street','Mansion Lane', 'Fairfield','Iowa','52557','1990-10-01', '1990-10-01', '1990-10-01', true);
+
+INSERT INTO USERS (id,username, first_name, last_name, email, phone_number, street_address, address2, city, state, zipcode, deactivate_at, created_at, deleted_at, status)
+VALUES (1234, 'keven', 'Keven', 'prince', 'keven@miu.edu', 'miu', 'fairfield', 'fairfield', 'iowa', 'US', 52557, '1990-10-01', '1990-10-01', '1990-10-01', true);
+
+INSERT INTO USERS (id,username, first_name, last_name, email, phone_number, street_address, address2, city, state, zipcode, deactivate_at, created_at, deleted_at, status)
+VALUES (1235,'prince', 'Keven', 'prince', 'prince@miu.edu', 'miu', 'fairfield', 'fairfield', 'iowa', 'US', 52557, '1990-10-01', '1990-10-01', '1990-10-01', true );
+
+INSERT INTO USERS (id,username, first_name, last_name, email, phone_number, street_address, address2, city, state, zipcode, deactivate_at, created_at, deleted_at, status)
+VALUES (1236, 'kprince','Keven', 'prince', 'kprince@miu.edu', 'miu', 'fairfield', 'fairfield', 'iowa', 'US', 52557, '1990-10-01', '1990-10-01', '1990-10-01', true );
 
 --PROPERTY
 INSERT INTO PROPERTY(id, owner_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at )
@@ -56,10 +62,10 @@ VALUES(2, 'https://photos.zillowstatic.com/fp/516277f76745f190c92f766ff6c1f59b-c
 
 --FAVORITE
 
-INSERT INTO  FAVORITES(id, create_at)
+INSERT INTO  FAVORITES(id, created_at)
 VALUES (1,  '1990-10-01');
 
-INSERT INTO FAVORITES (id, create_at)
+INSERT INTO FAVORITES (id, created_at)
 VALUES (2,  '1990-10-01');
 
 --LOG

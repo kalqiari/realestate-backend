@@ -21,7 +21,7 @@ public class Favorite {
     private Long id;
 //    private Long userId;
 //    private Long propertyId;
-    private Date createAt;
+    private Date createdAt;
 
     @ManyToMany
     List<User> users;

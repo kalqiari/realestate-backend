@@ -19,6 +19,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String username;
     private String firstName;
     private String lastName;
     private String email;
@@ -28,13 +29,14 @@ public class User {
     private String city;
     private String state;
     private String zipcode;
-    private boolean activeStatus;
-    private LocalDate deactivate_at;
-    private LocalDate create_at;
-    private LocalDate deleted_at;
+    private boolean status;
+    private LocalDate deactivateAt;
+    private LocalDate createdAt;
+    private LocalDate deletedAt;
 
-    @OneToMany
-    List<Role> roles;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    Role role;
 
     @OneToMany(mappedBy = "owner")
     List<Property> properties;
