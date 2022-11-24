@@ -22,12 +22,13 @@ public class UserController {
         this.userService = userService;
     }
 
-
+    @RolesAllowed("admin")
     @GetMapping()
     public List<User> getUsers() {
         return userService.findAll();
     }
 
+    @RolesAllowed("admin")
     @GetMapping("/{id}")
     public UserDto getUser(@PathVariable("id") Long id){
         return userService.findByIdDto(id);
@@ -42,8 +43,6 @@ public class UserController {
         }else{
             user.setActiveStatus(false);
         }
-
-
     }
 
     @RolesAllowed("admin")

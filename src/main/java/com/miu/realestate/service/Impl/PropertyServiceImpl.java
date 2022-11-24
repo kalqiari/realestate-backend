@@ -101,7 +101,7 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public List<PropertyDto> findPropertyByPropertyStatus(String propertyStatus) {
+    public List<PropertyDto> findPropertyByLastTenRented (String propertyStatus) {
         var property = propertyRepo.findPropertyByPropertyStatus(propertyStatus);
         return property.stream()
                 .filter(status -> status.getPropertyStatus().equalsIgnoreCase("rented"))

@@ -79,13 +79,16 @@ public class PropertyController {
     }
     @RolesAllowed("admin")
     @GetMapping("/findPropertyByPropertyStatus")
-    public List<PropertyDto> findPropertyByPropertyStatus (@RequestParam("propertyStatus") String propertyStatus){
-        return propertyService.findPropertyByPropertyStatus(propertyStatus);
+    public List<PropertyDto> findPropertyByLastTenRented (@RequestParam("propertyStatus") String propertyStatus){
+        return propertyService.findPropertyByLastTenRented (propertyStatus);
     }
     @RolesAllowed({"customer", "owner"})
-    public List<PropertyDto> findPropertyByPrice(@RequestParam double price) {
+    @GetMapping("/filterByPrice")
+    public List<PropertyDto> findPropertyByPrice(@RequestParam("price") double price) {
         return propertyService.findPropertyByPrice(price);
     }
+
+    @GetMapping("/filterByHomeType")
     @RolesAllowed({"customer", "owner"})
     public List<PropertyDto> findPropertyByHomeType(@RequestParam String homeType){
         return propertyService.findPropertyByHomeType(homeType);

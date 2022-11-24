@@ -4,6 +4,7 @@ import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.dto.response.ApplicationDto;
 import com.miu.realestate.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Role;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,12 +21,13 @@ public class ApplicationController {
     public ApplicationController(ApplicationService applicationService) {
         this.applicationService = applicationService;
     }
-
+    @RolesAllowed("customer")
     @PostMapping
     public void save(@RequestBody ApplicationDto applicationDto) {
        applicationService.save(applicationDto);
     }
 
+    @RolesAllowed("owner")
     @GetMapping
     public List<ApplicationDto> getAll() {
         return applicationService.getAll();
