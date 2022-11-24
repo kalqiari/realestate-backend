@@ -46,25 +46,25 @@ public class PropertyController {
         }
     }
 
-    @PreAuthorize("hasRole('OWNER')")
+    @RolesAllowed("owner")
     @PutMapping("/{id}")
     public void edit(@PathVariable("id") Long id, @RequestBody PropertyDto propertyDto) {
        propertyService.update(id, propertyDto);
     }
 
-    @PreAuthorize("hasRoles('OWNER', 'CUSTOMER')")
+    @RolesAllowed({"owner", "customer"})
     @GetMapping("/filterPropertyByNoOfRooms")
     public List<PropertyDto> findAllByNoOfBedRoom(@RequestParam int noOfRoom){
         return propertyService.findAllByNoOfBedRoom(noOfRoom);
     }
 
-    @PreAuthorize("hasRoles('OWNER', 'CUSTOMER')")
+    @RolesAllowed({"owner", "customer"})
     @GetMapping("/filterPropertyByAddress")
     public List<PropertyDto> findAllByAddressStateAndAddressCity(@RequestParam(required = false) String state, @RequestParam(required = false) String city){
         return propertyService.findAllByAddressStateAndAddressCity(state, city);
     }
 
-    @PreAuthorize("hasRoles('owner', 'customer')")
+    @RolesAllowed({"owner", "customer"})
     @GetMapping("/filterPropertyByType")
     public List<PropertyDto> findAllByPropertyType(@RequestParam("type") String type){
         return propertyService.findAllByPropertyType(type);
