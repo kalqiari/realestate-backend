@@ -17,5 +17,7 @@ public interface PropertyRepo extends CrudRepository<Property, Long> {
 
     List<Property> findAllByPropertyType(String type);
 
+    List <Property> findPropertyByPropertyStatus(String propertyStatus);
+
     String findByEmail(String username);
 }

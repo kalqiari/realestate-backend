@@ -13,6 +13,7 @@ public class PropertyRequestDto {
     private String city;
     private String state;
     private String zipcode;
+    private String propertyStatus;
     private String listing_type;
     private String description;
     private double price;

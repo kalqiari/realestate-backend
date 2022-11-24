@@ -37,7 +37,7 @@ public class PropertyController {
         return propertyService.getById(id);
     }
 
-    @RolesAllowed("owner")
+    @RolesAllowed( "owner")
     @DeleteMapping("/{id}")
     public void unList(@PathVariable Long id) {
         PropertyDto property = getById(id);
@@ -46,27 +46,35 @@ public class PropertyController {
         }
     }
 
-    @PreAuthorize("hasRole('OWNER')")
+    @RolesAllowed( "owner")
     @PutMapping("/{id}")
     public void edit(@PathVariable("id") Long id, @RequestBody PropertyDto propertyDto) {
        propertyService.update(id, propertyDto);
     }
 
-    @PreAuthorize("hasRoles('OWNER', 'CUSTOMER')")
+    @RolesAllowed({"customer", "owner"})
     @GetMapping("/filterPropertyByNoOfRooms")
     public List<PropertyDto> findAllByNoOfBedRoom(@RequestParam int noOfRoom){
         return propertyService.findAllByNoOfBedRoom(noOfRoom);
     }
 
-    @PreAuthorize("hasRoles('OWNER', 'CUSTOMER')")
+    @RolesAllowed({"admin", "owner"})
     @GetMapping("/filterPropertyByAddress")
     public List<PropertyDto> findAllByAddressStateAndAddressCity(@RequestParam(required = false) String state, @RequestParam(required = false) String city){
         return propertyService.findAllByAddressStateAndAddressCity(state, city);
     }
 
-    @PreAuthorize("hasRoles('OWNER', 'CUSTOMER')")
+
+    @RolesAllowed({"admin", "owner"})
     @GetMapping("/filterPropertyByType")
     public List<PropertyDto> findAllByPropertyType(@RequestParam("type") String type){
         return propertyService.findAllByPropertyType(type);
+
+
+    }
+    @RolesAllowed("admin")
+    @GetMapping("/findPropertyByPropertyStatus")
+    public List<PropertyDto> findPropertyByPropertyStatus (@RequestParam("propertyStatus") String propertyStatus){
+        return propertyService.findPropertyByPropertyStatus(propertyStatus);
     }
 }

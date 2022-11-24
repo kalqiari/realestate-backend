@@ -22,6 +22,7 @@ public class Property {
     private String city;
     private String state;
     private String zipcode;
+    private String propertyStatus;
     private String listingType;
     private String description;
     private double price;
@@ -45,6 +46,9 @@ public class Property {
 
     @JsonFormat(pattern="dd/MM/yyyy")
     private Date deletedAt;
+
+    @JsonFormat(pattern="dd/MM/yyyy")
+    private Date soldRentedAt;
 
     @ManyToOne
     private User owner;
