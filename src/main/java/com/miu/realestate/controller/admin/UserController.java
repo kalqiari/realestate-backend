@@ -38,10 +38,10 @@ public class UserController {
     @PutMapping("/activateDeactivateUser")
     public void activateDeactivateUser(@PathVariable Long id ){
         var user = userService.findById(id);
-        if(!user.isActiveStatus()){
-            user.setActiveStatus(true);
+        if(!user.isStatus()){
+            user.setStatus(true);
         }else{
-            user.setActiveStatus(false);
+            user.setStatus(false);
         }
     }
 

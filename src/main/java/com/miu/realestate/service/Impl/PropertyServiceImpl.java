@@ -1,4 +1,4 @@
-package com.miu.realestate.service.impl;
+package com.miu.realestate.service.Impl;
 
 import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.User;
@@ -80,9 +80,6 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public List<PropertyDto> findAllByAddressStateAndAddressCity(String state, String city) {
-
-
-        List<Property> properties = propertyRepo.findAllByAddressStateAndAddressCity(state);
 
         List<Property> properties = propertyRepo.findByStateAndCity(state, city);
         return properties
