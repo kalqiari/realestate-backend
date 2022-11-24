@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
+import javax.ws.rs.Path;
 import java.util.List;
 
 @RestController
@@ -21,15 +22,27 @@ public class UserController {
         this.userService = userService;
     }
 
-
+    @RolesAllowed("admin")
     @GetMapping()
     public List<User> getUsers() {
         return userService.findAll();
     }
 
+    @RolesAllowed("admin")
     @GetMapping("/{id}")
     public UserDto getUser(@PathVariable("id") Long id){
         return userService.findByIdDto(id);
+    }
+
+    @RolesAllowed("admin")
+    @PutMapping("/activateDeactivateUser")
+    public void activateDeactivateUser(@PathVariable Long id ){
+        var user = userService.findById(id);
+        if(!user.isActiveStatus()){
+            user.setActiveStatus(true);
+        }else{
+            user.setActiveStatus(false);
+        }
     }
 
     @RolesAllowed("admin")
@@ -44,6 +57,7 @@ public class UserController {
         userService.deleteById(id);
     }
 
+    @RolesAllowed("admin")
     @PutMapping("/{id}")
     public void update(@PathVariable("id") Long userId, @RequestBody UserDto userDto) {
         userService.update(userId, userDto);

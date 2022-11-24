@@ -18,4 +18,12 @@ public interface PropertyRepo extends CrudRepository<Property, Long> {
 
     List<Property> findByHomeType(String type);
 
+    List <Property> findPropertyByPropertyStatus(String propertyStatus);
+
+    String findByEmail(String username);
+
+    List <Property> findPropertyByPrice(double price);
+
+    List<Property> findPropertyByHomeType(String homeType);
+
 }

@@ -1,5 +1,6 @@
 package com.miu.realestate.service.Impl;
 import com.miu.realestate.entity.Application;
+import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.dto.response.ApplicationDto;
 import com.miu.realestate.repo.ApplicationRepo;
 import com.miu.realestate.service.ApplicationService;
@@ -60,6 +61,24 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public List<ApplicationDto> findAllByCreatedAt(LocalDate submittedAt) {
         List<Application> applications = applicationRepo.findByCreatedAt(submittedAt);
+        return applications
+                .stream()
+                .map(application -> modelMapper.map(application, ApplicationDto.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ApplicationDto> findApplicationByProperty(Property property) {
+        List<Application> applications = applicationRepo.findApplicationByProperty(property);
+        return applications
+                .stream()
+                .map(application -> modelMapper.map(application, ApplicationDto.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ApplicationDto> findApplicationByPropertyStateAndPropertyCity(String state, String city) {
+        List<Application> applications = applicationRepo.findApplicationByPropertyStateAndPropertyCity(state,city);
         return applications
                 .stream()
                 .map(application -> modelMapper.map(application, ApplicationDto.class))

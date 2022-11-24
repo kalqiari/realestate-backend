@@ -31,7 +31,7 @@ public class PhotoController {
     }
 
     @RolesAllowed("owner")
-    @PostMapping("/")
+    @PostMapping("/uploadPhoto")
     public void upload(@RequestPart("files") List<MultipartFile> files) throws Exception {
         photoService.save(files);
     }

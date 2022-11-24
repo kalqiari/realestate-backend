@@ -1,5 +1,6 @@
 package com.miu.realestate.service;
 
+import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.dto.response.PropertyDto;
 
 import java.util.List;
@@ -18,4 +19,9 @@ public interface PropertyService {
     List<PropertyDto> findAllByAddressStateAndAddressCity(String state, String city);
 
     List<PropertyDto> findAllByPropertyType(String type);
+    List <PropertyDto> findPropertyByLastTenRented (String propertyStatus);
+
+    List <PropertyDto> findPropertyByPrice(double price);
+
+    List<PropertyDto> findPropertyByHomeType(String homeType);
 }

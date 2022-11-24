@@ -37,6 +37,7 @@ public class PropertyController {
         return propertyService.getById(id);
     }
 
+
     @RolesAllowed("owner")
     @DeleteMapping("/{id}")
     public void unList(@PathVariable Long id) {
@@ -45,6 +46,7 @@ public class PropertyController {
             propertyService.delete(id);
         }
     }
+
 
     @RolesAllowed("owner")
     @PutMapping("/{id}")
@@ -58,15 +60,40 @@ public class PropertyController {
         return propertyService.findAllByNoOfBedRoom(noOfRoom);
     }
 
+    static int views = 0;
     @RolesAllowed({"owner", "customer"})
     @GetMapping("/filterPropertyByAddress")
     public List<PropertyDto> findAllByAddressStateAndAddressCity(@RequestParam(required = false) String state, @RequestParam(required = false) String city){
+        views++;
         return propertyService.findAllByAddressStateAndAddressCity(state, city);
+    }
+    @RolesAllowed({"owner"})
+    @GetMapping("/displayViewsByAddress")
+    public int displayViews(){
+        return views;
     }
 
     @RolesAllowed({"owner", "customer"})
     @GetMapping("/filterPropertyByType")
     public List<PropertyDto> findAllByPropertyType(@RequestParam("type") String type){
         return propertyService.findAllByPropertyType(type);
+
+
+    }
+    @RolesAllowed("admin")
+    @GetMapping("/findPropertyByPropertyStatus")
+    public List<PropertyDto> findPropertyByLastTenRented (@RequestParam("propertyStatus") String propertyStatus){
+        return propertyService.findPropertyByLastTenRented (propertyStatus);
+    }
+    @RolesAllowed({"customer", "owner"})
+    @GetMapping("/filterByPrice")
+    public List<PropertyDto> findPropertyByPrice(@RequestParam("price") double price) {
+        return propertyService.findPropertyByPrice(price);
+    }
+
+    @GetMapping("/filterByHomeType")
+    @RolesAllowed({"customer", "owner"})
+    public List<PropertyDto> findPropertyByHomeType(@RequestParam String homeType){
+        return propertyService.findPropertyByHomeType(homeType);
     }
 }
