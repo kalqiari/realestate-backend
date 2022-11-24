@@ -37,7 +37,7 @@ public class PropertyController {
         return propertyService.getById(id);
     }
 
-    @PreAuthorize("hasRole('OWNER')")
+    @RolesAllowed("owner")
     @DeleteMapping("/{id}")
     public void unList(@PathVariable Long id) {
         PropertyDto property = getById(id);

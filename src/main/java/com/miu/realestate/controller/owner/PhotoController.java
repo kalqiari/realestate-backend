@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,7 @@ public class PhotoController {
         return photoService.findById(id);
     }
 
-    @PreAuthorize("hasRole('OWNER')")
+    @RolesAllowed("owner")
     @PostMapping("/")
     public void upload(@RequestPart("files") List<MultipartFile> files) throws Exception {
         photoService.save(files);

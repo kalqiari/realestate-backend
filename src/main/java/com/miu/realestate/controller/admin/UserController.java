@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -31,13 +32,13 @@ public class UserController {
         return userService.findByIdDto(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @RolesAllowed("admin")
     @PostMapping()
     public void save(@RequestBody UserDto userDto) {
         userService.save(userDto);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @RolesAllowed("admin")
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         userService.deleteById(id);
@@ -48,7 +49,7 @@ public class UserController {
         userService.update(userId, userDto);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @RolesAllowed("admin")
     @GetMapping("/top10RecentCustomers")
     public List<User>findRecentCustomers(){
         return userService.findTop10RecentCustomers();

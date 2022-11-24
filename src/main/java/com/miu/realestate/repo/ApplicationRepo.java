@@ -13,5 +13,5 @@ public interface ApplicationRepo extends CrudRepository<Application,Long> {
 
     List<Application> findAll();
 
-    List<Application> findAllByCreatedAt(LocalDate submittedAt);
+    List<Application> findByCreatedAt(LocalDate submittedAt);
 }
