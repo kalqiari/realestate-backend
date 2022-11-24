@@ -1,11 +1,13 @@
 package com.miu.realestate.controller;
 
+import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.dto.response.ApplicationDto;
 import com.miu.realestate.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -44,10 +46,21 @@ public class ApplicationController {
     public void update(@PathVariable("id") Long application_id, @RequestBody ApplicationDto applicationDto) {
         applicationService.update(application_id, applicationDto);
     }
-
+    @RolesAllowed("owner")
     @GetMapping("/filterBySubmissionDate")
     public List<ApplicationDto> findAllByCreatedAt(@RequestParam("submittedAt")LocalDate submittedAt) {
         return applicationService.findAllByCreatedAt(submittedAt);
+    }
+    @RolesAllowed("owner")
+    @GetMapping("/filterByLocation")
+    public List<ApplicationDto> findApplicationByPropertyStateAndPropertyCity(@RequestParam String state, String city) {
+        return applicationService.findApplicationByPropertyStateAndPropertyCity(state, city);
+    }
+
+    @RolesAllowed("owner")
+    @GetMapping("/filterByProperty")
+    public List<ApplicationDto> findApplicationByProperty(@RequestParam Property property) {
+        return applicationService.findApplicationByProperty(property);
     }
 
 }
