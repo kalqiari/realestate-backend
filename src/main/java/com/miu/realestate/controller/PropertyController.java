@@ -42,8 +42,10 @@ public class PropertyController {
     public List<PropertyDto> getAll(Principal principal, @RequestParam(value = "favorite", required = false) Boolean favorite) {
        if(principal != null) {
            var user = userService.findByUsername(principal.getName());
-           if (user != null && user.getRoleId() == 3)
+           if (user != null && user.getRoleId() == 3 && favorite != null)
                return propertyService.findPropertiesFavoriteByUserId(user.getId());
+           else
+               return propertyService.getAll();
        }
         return propertyService.getAll();
     }
@@ -52,7 +54,7 @@ public class PropertyController {
     public PropertyDto getById(@PathVariable Long id) {
         return propertyService.getById(id);
     }
-
+    @RolesAllowed("customer")
     @PutMapping("/{property_id}/favoriteToggle")
     public void favoriteToggle(@PathVariable Long property_id, Principal principal){
 

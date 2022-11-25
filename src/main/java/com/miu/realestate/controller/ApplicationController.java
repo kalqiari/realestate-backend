@@ -1,16 +1,19 @@
 package com.miu.realestate.controller;
 
 import com.miu.realestate.entity.Property;
+import com.miu.realestate.entity.dto.request.ApplicationRequestDto;
 import com.miu.realestate.entity.dto.response.ApplicationDto;
 import com.miu.realestate.service.ApplicationService;
+import com.miu.realestate.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Role;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
 import java.security.Principal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 @CrossOrigin("*")
 @RestController
@@ -18,20 +21,33 @@ import java.util.List;
 public class ApplicationController {
 
     private  ApplicationService applicationService;
+    private UserService userService;
+    private ModelMapper modelMapper;
     @Autowired
-    public ApplicationController(ApplicationService applicationService) {
+    public ApplicationController(ApplicationService applicationService, UserService userService, ModelMapper modelMapper) {
         this.applicationService = applicationService;
+        this.userService = userService;
+        this.modelMapper = modelMapper;
     }
     @RolesAllowed("customer")
     @PostMapping
-    public void save(@RequestBody ApplicationDto applicationDto) {
+    public void save(@RequestBody ApplicationRequestDto applicationDto, Principal principal) {
+        applicationDto.setUserId(userService.findByUsername(principal.getName()).getId());
+        applicationDto.setCreatedAt(LocalDate.now());
        applicationService.save(applicationDto);
     }
 
     @RolesAllowed({"owner", "customer"})
     @GetMapping
-    public List<ApplicationDto> getAll() {
-        return applicationService.getAll();
+    public List<ApplicationDto> getAll(Principal principal) {
+        var user = userService.findByUsername(principal.getName());
+
+        if(user.getRoleId() == 3)
+          return applicationService.findByUserID(user.getId());
+        else if(user.getRoleId() == 2)
+        return applicationService.findByOwnerId(user.getId());
+        else
+            return null;
     }
 
     @GetMapping("/{id}")

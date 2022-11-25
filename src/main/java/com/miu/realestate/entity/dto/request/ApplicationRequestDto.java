@@ -1,22 +1,19 @@
-package com.miu.realestate.entity;
+package com.miu.realestate.entity.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class Application {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+public class ApplicationRequestDto {
 
+    private Long Id;
+    private long propertyId;
+    private long userId;
     private String applicationType;
     private String employmentInfo;
     private double creditScore;
@@ -26,11 +23,4 @@ public class Application {
     private LocalDate createdAt;
     private LocalDate reviewedAt;
     private LocalDate deletedAt;
-
-    @ManyToOne
-    User user;
-
-    @ManyToOne
-    Property property;
-
 }

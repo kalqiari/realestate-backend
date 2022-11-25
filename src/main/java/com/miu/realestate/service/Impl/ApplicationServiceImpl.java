@@ -1,6 +1,7 @@
-package com.miu.realestate.service.Impl;
+package com.miu.realestate.service.impl;
 import com.miu.realestate.entity.Application;
 import com.miu.realestate.entity.Property;
+import com.miu.realestate.entity.dto.request.ApplicationRequestDto;
 import com.miu.realestate.entity.dto.response.ApplicationDto;
 import com.miu.realestate.repo.ApplicationRepo;
 import com.miu.realestate.service.ApplicationService;
@@ -26,7 +27,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     private ModelMapper modelMapper;
     @Override
-    public void save(ApplicationDto applicationDto) {
+    public void save(ApplicationRequestDto applicationDto) {
         applicationRepo.save(modelMapper.map(applicationDto, Application.class));
     }
 
@@ -79,6 +80,24 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public List<ApplicationDto> findApplicationByPropertyStateAndPropertyCity(String state, String city) {
         List<Application> applications = applicationRepo.findApplicationByPropertyStateAndPropertyCity(state,city);
+        return applications
+                .stream()
+                .map(application -> modelMapper.map(application, ApplicationDto.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ApplicationDto> findByUserID(Long userId) {
+        List<Application> applications = applicationRepo.findByUserID(userId);
+        return applications
+                .stream()
+                .map(application -> modelMapper.map(application, ApplicationDto.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ApplicationDto> findByOwnerId(Long ownerId) {
+        List<Application> applications = applicationRepo.findByOwnerId(ownerId);
         return applications
                 .stream()
                 .map(application -> modelMapper.map(application, ApplicationDto.class))
