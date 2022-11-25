@@ -49,8 +49,7 @@ public class PropertyController {
     }
 
     @GetMapping("/{id}")
-    public PropertyDto getById(@PathVariable Long id) {
-        return propertyService.getById(id);
+    public PropertyDto getById(@PathVariable Long id) {return propertyService.getById(id);
     }
 
     @PutMapping("/{property_id}/favoriteToggle")
