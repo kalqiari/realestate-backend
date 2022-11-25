@@ -17,7 +17,7 @@ public class PropertyDto {
     private String state;
     private String zipcode;
     private String propertyStatus;
-    private String listing_type;
+    private String listingType;
     private String description;
     private double price;
     private String homeType;
