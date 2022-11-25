@@ -13,6 +13,8 @@ public interface FavoriteService {
     void save(FavoriteDto favoriteDto);
 
     void deleteById(Long id);
+
+    FavoriteDto findByPropertyIdAndUserId(Long id, Long user_id);
 }
 
 

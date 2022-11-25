@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FavoriteDto {
-
+    private Long id;
     private Long userId;
     private Long propertyId;
+    private Long favoriteListId;
+
 }

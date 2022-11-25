@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface FavoriteRepo extends CrudRepository<Favorite, Long> {
     List<Favorite> findAll();
+
+    List<Favorite> findByPropertyIdAndUserId(Long id, Long user_id);
 }

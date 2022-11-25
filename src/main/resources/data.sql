@@ -143,13 +143,13 @@ VALUES (15, 'https://photos.zillowstatic.com/fp/c16f87f0d72f81d924545ecbd2b6c60a
 INSERT INTO PHOTOS (id, url, property_id, deleted_at)
 VALUES(16, 'https://photos.zillowstatic.com/fp/516277f76745f190c92f766ff6c1f59b-cc_ft_1536.webp',36,  '1990-10-01');
 
---FAVORITE
-
-INSERT INTO  FAVORITES(id, user_id,property_id, created_at)
-VALUES (1, 3,21, '1990-10-01');
-
-INSERT INTO FAVORITES (id,user_id,property_id, created_at)
-VALUES (2, 3,22, '1990-10-01');
+-- --FAVORITE
+--
+-- INSERT INTO  FAVORITES(id, user_id,property_id, created_at)
+-- VALUES (1, 3,21, '1990-10-01');
+--
+-- INSERT INTO FAVORITES (id,user_id,property_id, created_at)
+-- VALUES (2, 3,22, '1990-10-01');
 
 
 --QUESTION
