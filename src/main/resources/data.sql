@@ -87,10 +87,10 @@ VALUES(36, 1236, '231N 1st St','KKK Lane','Beverly Hills', 'CA', '23089', 'Sale'
 -- APPLICATION
 
 INSERT INTO APPLICATION (id,user_id, property_id, application_type, employment_info, credit_score, review_status, dropped_at, created_at, reviewed_at, deleted_at)
-VALUES (100,3, 21, 'Rent' , 'unemployment', 300, 'Rejected', '1990-10-01', '1990-10-01', '2021-10-01', '1990-10-01' );
+VALUES (100,3, 21, 'Rent' , 'unemployment', 300, 'Pending', '1990-10-01', '1990-10-01', '2021-10-01', '1990-10-01' );
 
 INSERT INTO APPLICATION (id,user_id,property_id, application_type, employment_info, credit_score, review_status, dropped_at, created_at, reviewed_at, deleted_at)
-VALUES (200,3, 22, 'Buy' , 'employment', 700, 'Approved', '1990-10-01', '1990-10-01', '1990-10-01', '1990-10-01' );
+VALUES (200,3, 22, 'Buy' , 'employment', 700, 'Pending', '1990-10-01', '1990-10-01', '1990-10-01', '1990-10-01' );
 
 
 -- PHOTO
