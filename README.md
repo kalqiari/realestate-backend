@@ -101,9 +101,16 @@
  - property_id
  - content
  - created_at
-
+ 
+### FavoriteList
+ - id 
+ - user_id
+ - Name
+ - created_at
+ 
 ### Favorite
  - id 
+ - favorite_list_id
  - user_id
  - property_id
  - created_at
