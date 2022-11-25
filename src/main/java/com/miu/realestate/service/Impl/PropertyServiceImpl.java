@@ -9,10 +9,12 @@ import com.miu.realestate.repo.UserRepo;
 import com.miu.realestate.service.PropertyService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 @Service
@@ -100,12 +102,10 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public List<PropertyDto> findPropertyByLastTenRented (String propertyStatus) {
-        var property = propertyRepo.findPropertyByPropertyStatus(propertyStatus);
-        return property.stream()
-                .filter(status -> status.getPropertyStatus().equalsIgnoreCase("rented"))
-                .sorted((o1, o2) -> o2.getSoldRentedAt().compareTo(o1.getSoldRentedAt()))
-                .map(post -> modelMapper.map(post,PropertyDto.class))
-                .limit(10)
+        var properties = propertyRepo.findAllRentedByDateRange(LocalDate.now(), LocalDate.now().plusDays(10));
+        return properties
+                .stream()
+                .map(p -> modelMapper.map(p, PropertyDto.class))
                 .collect(Collectors.toList());
     }
 

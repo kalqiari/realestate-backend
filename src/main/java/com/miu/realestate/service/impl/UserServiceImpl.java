@@ -1,5 +1,6 @@
 package com.miu.realestate.service.Impl;
 
+import com.miu.realestate.entity.Role;
 import com.miu.realestate.entity.User;
 import com.miu.realestate.entity.dto.response.PropertyDto;
 import com.miu.realestate.entity.dto.response.UserDto;
@@ -9,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private UserRepo userRepo;
+
     @Autowired
     public UserServiceImpl(UserRepo userRepo){
         this.userRepo = userRepo;
@@ -58,9 +61,12 @@ public class UserServiceImpl implements UserService {
         userRepo.save(modelMapper.map(userDto, User.class));
     }
 
+    private Role customer = new Role(3, "customer");
+
     @Override
     public List<UserDto> findTop10RecentCustomers() {
-        List<User> users = userRepo.findTop10ByRoleEqualsOrderByCreatedAtDesc(3);
+        LocalDate now = LocalDate.now();
+        List<User> users = userRepo.findTop10ByRoleEqualsOrderByCreatedAtDesc(customer, now, now.plusDays(10));
         return users
                 .stream()
                 .map(user -> modelMapper.map(user, UserDto.class))
