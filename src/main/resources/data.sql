@@ -36,6 +36,7 @@ INSERT INTO USERS (id,username, first_name, last_name, email, phone_number, stre
 VALUES (1236, 'kprince','Keven', 'prince', 'kprince@miu.edu', 'miu', 'fairfield', 'fairfield', 'iowa', 'US', 52557, '1990-10-01', '1990-10-01', '1990-10-01',3, true );
 
 --PROPERTY
+
 INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, status, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at, sold_rented_at )
 VALUES(641, 1236, '236W 1st St','Curry Lane','Beverly Hills', 'California', '230089', 'pending','Sale','beautiful mansion by the sea',43000000, 'mansion', 180056.92,10, 13, true, 'open parking space', 6, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01', '1990-10-01' );
 
@@ -56,6 +57,7 @@ VALUES(214, 011, '23W 1st St','Curry Lane','Beverly Hills', 'CA', '23089','sold'
 
 INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, status,listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at )
 VALUES(215, 012, '23W 1st St','Curry Lane','Beverly Hills', 'CA', '23089','sold', 'Sale','beautiful mansion by the sea',43000000, 'mansion', 10056,10, 13, true, 'open parking space', 6, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01' );
+
 
 -- APPLICATION
 
