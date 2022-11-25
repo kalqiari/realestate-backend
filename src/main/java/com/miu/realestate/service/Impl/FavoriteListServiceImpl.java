@@ -1,5 +1,6 @@
-package com.miu.realestate.service.Impl;
+package com.miu.realestate.service.impl;
 
+import com.miu.realestate.entity.FavoriteList;
 import com.miu.realestate.entity.dto.response.FavoriteListDto;
 import com.miu.realestate.repo.FavoriteListRepo;
 import com.miu.realestate.service.FavoriteListService;
@@ -29,7 +30,7 @@ public class FavoriteListServiceImpl implements FavoriteListService {
     }
 
     @Override
-    public void save(FavoriteListDto list) {
-      favoriteListRepo.save(list);
+    public void save(FavoriteListDto favoriteListDto) {
+        favoriteListRepo.save(modelMapper.map(favoriteListDto, FavoriteList.class));
     }
 }

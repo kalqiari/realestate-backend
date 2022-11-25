@@ -28,8 +28,8 @@ public class PropertyController {
     public PropertyController(FavoriteListService favoriteListService, FavoriteService favoriteService, UserService userService, PropertyService propertyService) {
         this.favoriteListService = favoriteListService;
         this.favoriteService = favoriteService;
-        this.userService = userService;
         this.propertyService = propertyService;
+        this.userService = userService;
     }
 
     @RolesAllowed("owner")
@@ -39,7 +39,12 @@ public class PropertyController {
     }
 
     @GetMapping
-    public List<PropertyDto> getAll() {
+    public List<PropertyDto> getAll(Principal principal, @RequestParam(value = "favorite", required = false) Boolean favorite) {
+       if(principal != null) {
+           var user = userService.findByUsername(principal.getName());
+           if (user != null && user.getRoleId() == 3)
+               return propertyService.findPropertiesFavoriteByUserId(user.getId());
+       }
         return propertyService.getAll();
     }
 
@@ -49,14 +54,14 @@ public class PropertyController {
     }
 
     @PutMapping("/{property_id}/favoriteToggle")
-    public void favoritesToggle(@PathVariable Long property_id, Principal principal){
+    public void favoriteToggle(@PathVariable Long property_id, Principal principal){
 
         var user = userService.findByUsername(principal.getName());
 
        if(user != null){
            var favorite = favoriteService.findByPropertyIdAndUserId(property_id, user.getId());
             if(favorite != null){
-                favoriteService.deleteById(favorite.getPropertyId());
+                favoriteService.deleteById(favorite.getId());
             }else{
                 var favoriteDto = new FavoriteDto();
                 favoriteDto.setUserId(user.getId());
@@ -67,12 +72,13 @@ public class PropertyController {
                    favoriteDto.setFavoriteListId(favoriteList.get(0).getId());
                    favoriteService.save(favoriteDto);
                }else{
-                   var list = new FavoriteListDto();
+
+                   FavoriteListDto list = new FavoriteListDto();
                   list.setListName("default");
                   list.setUserId(user.getId());
 
                   favoriteListService.save(list);
-                   var newList = favoriteListService.findByUserId(user.getId()).get(0);
+                   FavoriteListDto newList = favoriteListService.findByUserId(user.getId()).get(0);
 
                    favoriteDto.setFavoriteListId(newList.getId());
                   favoriteService.save(favoriteDto);

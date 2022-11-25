@@ -15,6 +15,8 @@ public interface FavoriteService {
     void deleteById(Long id);
 
     FavoriteDto findByPropertyIdAndUserId(Long id, Long user_id);
+
+    void deleteByPropertyIdAndUserId(Long propertyId, Long userID);
 }
 
 

@@ -126,4 +126,13 @@ public class PropertyServiceImpl implements PropertyService {
                 .map(post -> modelMapper.map(post,PropertyDto.class))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<PropertyDto> findPropertiesFavoriteByUserId(Long id) {
+        List<Property> properties = propertyRepo.findPropertiesFavoriteByUserId(id);
+        return properties
+                .stream()
+                .map(post -> modelMapper.map(post,PropertyDto.class))
+                .collect(Collectors.toList());
+    }
 }

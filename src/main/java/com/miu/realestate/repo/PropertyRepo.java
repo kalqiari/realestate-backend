@@ -1,6 +1,7 @@
 package com.miu.realestate.repo;
 
 import com.miu.realestate.entity.Property;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -23,7 +24,6 @@ public interface PropertyRepo extends CrudRepository<Property, Long> {
     List <Property> findPropertyByPrice(double price);
 
     List<Property> findPropertyByHomeType(String homeType);
-
-
-
+    @Query("select p from Property p join Favorite f on p= f.property where f.user.id = :id ")
+    List<Property> findPropertiesFavoriteByUserId(Long id);
 }

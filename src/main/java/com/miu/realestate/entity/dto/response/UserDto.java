@@ -22,4 +22,6 @@ public class UserDto {
     private String state;
     private String zipcode;
     private boolean status;
-}
+    private Long roleId;
+
+  }

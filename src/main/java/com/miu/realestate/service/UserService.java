@@ -23,5 +23,5 @@ public interface UserService {
 
     List<UserDto> findTop10RecentCustomers();
 
-    UserDto findByUsername(String name);
+    UserDto findByUsername(String username);
 }

@@ -12,9 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FavoriteListDto {
-
     private Long id;
     private String listName;
     private Long userId;
-
 }
