@@ -39,11 +39,17 @@ public class PropertyController {
     }
 
     @GetMapping
-    public List<PropertyDto> getAll(Principal principal, @RequestParam(value = "favorite", required = false) Boolean favorite) {
+    public List<PropertyDto> getAll(Principal principal,
+                                    @RequestParam(value = "favorite", required = false) Boolean favorite)
+//                                    ,@RequestParam(value = "user_id", required = false) Long userId)
+                        {
        if(principal != null) {
            var user = userService.findByUsername(principal.getName());
            if (user != null && user.getRoleId() == 3 && favorite != null)
                return propertyService.findPropertiesFavoriteByUserId(user.getId());
+           else if (user != null && user.getRoleId() == 2 ){
+               return propertyService.findPropertyByUserId(user.getId());
+           }
            else
                return propertyService.getAll();
        }
