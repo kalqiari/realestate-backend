@@ -144,4 +144,33 @@ public class PropertyServiceImpl implements PropertyService {
                 .map(post -> modelMapper.map(post,PropertyDto.class))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<PropertyDto> filter(String criteria, String input) {
+        List<Property> properties;
+        if (criteria == null)
+        {
+            properties  = propertyRepo.findAll();
+        }
+        else if (criteria.equals("city"))
+        {
+            properties  = propertyRepo.findByCity(input);
+        }
+        else if (criteria.equals("state"))
+        {
+            properties  = propertyRepo.findByState(input);
+        }else if(criteria.equals("price")){
+            properties  = propertyRepo.findByPriceLessThan(input);
+        }
+        else if(criteria.equals("zipcode")){
+            properties  = propertyRepo.findByZipcode(input);
+        }
+        else {
+            properties  = propertyRepo.findAll();
+        }
+        return properties
+                .stream()
+                .map(post -> modelMapper.map(post, PropertyDto.class))
+                .collect(Collectors.toList());
+    }
 }

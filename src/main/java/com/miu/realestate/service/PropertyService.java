@@ -30,4 +30,6 @@ public interface PropertyService {
 //    List<PropertyDto> findPropertyByRoleId(Long roleId);
 
     List<PropertyDto> findPropertyByUserId(Long userId);
+
+    List<PropertyDto> filter(String criteria, String input);
 }

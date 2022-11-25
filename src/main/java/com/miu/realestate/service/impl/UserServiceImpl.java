@@ -1,4 +1,4 @@
-package com.miu.realestate.service.Impl;
+package com.miu.realestate.service.impl;
 
 import com.miu.realestate.entity.User;
 import com.miu.realestate.entity.dto.response.PropertyDto;
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> findTop10RecentCustomers() {
-        List<User> users = userRepo.findTop10ByRoleEqualsOrderByCreatedAtDesc(3);
+        List<User> users = userRepo.findTop10ByRoleIdEqualsOrderByCreatedAtDesc(3L);
         return users
                 .stream()
                 .map(user -> modelMapper.map(user, UserDto.class))

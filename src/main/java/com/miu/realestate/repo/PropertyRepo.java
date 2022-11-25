@@ -28,4 +28,12 @@ public interface PropertyRepo extends CrudRepository<Property, Long> {
     List<Property> findPropertiesFavoriteByUserId(Long id);
    // @Query("select p from Property p join User u on p= u.properties where u.id = :id ")
     List<Property> findPropertyByUserId(Long id);
+
+    List<Property> findByCity(String input);
+
+    List<Property> findByState(String input);
+
+    List<Property> findByPriceLessThan(String input);
+
+    List<Property> findByZipcode(String input);
 }
