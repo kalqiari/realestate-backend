@@ -24,7 +24,7 @@ public class UserController {
 
     @RolesAllowed("admin")
     @GetMapping()
-    public List<User> getUsers() {
+    public List<UserDto> getUsers() {
         return userService.findAll();
     }
 
@@ -38,7 +38,7 @@ public class UserController {
     @PutMapping("/activateDeactivateUser")
     public void activateDeactivateUser(@PathVariable Long id ){
         var user = userService.findById(id);
-        if(!user.isStatus()){
+        if(user.isStatus()){
             user.setStatus(true);
         }else{
             user.setStatus(false);
@@ -65,7 +65,7 @@ public class UserController {
 
     @RolesAllowed("admin")
     @GetMapping("/top10RecentCustomers")
-    public List<User>findRecentCustomers(){
+    public List<UserDto>findRecentCustomers(){
         return userService.findTop10RecentCustomers();
     }
 }

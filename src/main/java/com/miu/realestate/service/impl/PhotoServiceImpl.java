@@ -1,6 +1,7 @@
 package com.miu.realestate.service.Impl;
 
 import com.miu.realestate.entity.Photo;
+import com.miu.realestate.entity.dto.response.PhotoDto;
 import com.miu.realestate.repo.PhotoRepo;
 import com.miu.realestate.service.PhotoService;
 import org.modelmapper.ModelMapper;
@@ -26,19 +27,20 @@ public class PhotoServiceImpl implements PhotoService {
 
 
     @Override
-    public List<Photo> findAll() {
+    public List<PhotoDto> findAll() {
 
         var photos = photoRepo.findAll();
 
         return photos
                 .stream()
-                .map(photo -> modelMapper.map(photo, Photo.class))
+                .map(photo -> modelMapper.map(photo, PhotoDto.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Photo findById(Long id) {
-        return modelMapper.map(photoRepo.findById(id), Photo.class);
+    public PhotoDto findById(Long id) {
+
+        return modelMapper.map(photoRepo.findById(id), PhotoDto.class);
     }
 
     @Override

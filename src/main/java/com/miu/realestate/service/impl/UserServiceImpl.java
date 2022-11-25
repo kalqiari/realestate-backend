@@ -24,16 +24,17 @@ public class UserServiceImpl implements UserService {
     ModelMapper modelMapper;
 
     @Override
-    public List<User> findAll() {
+    public List<UserDto> findAll() {
 
         var users = userRepo.findAll();
 
-        return users;
+        return users.stream().map(user -> modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
     }
 
     @Override
-    public User findById(Long id) {
-        return userRepo.findById(id).get();
+    public UserDto findById(Long id) {
+
+        return modelMapper.map(userRepo.findById(id).get(), UserDto.class);
     }
 
     @Override
@@ -58,12 +59,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findTop10RecentCustomers() {
+    public List<UserDto> findTop10RecentCustomers() {
         List<User> users = userRepo.findTop10ByRoleEqualsOrderByCreatedAtDesc(3);
-//        return users
-//                .stream()
-//                .map(user -> modelMapper.map(user, UserDto.class))
-//                .collect(Collectors.toList());
-        return null;
+        return users
+                .stream()
+                .map(user -> modelMapper.map(user, UserDto.class))
+                .collect(Collectors.toList());
     }
 }

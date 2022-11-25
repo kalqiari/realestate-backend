@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface UserService {
 
-    List<User> findAll();
+    List<UserDto> findAll();
 
-    User findById(Long id);
+    UserDto findById(Long id);
 
     UserDto findByIdDto(Long id);
 
@@ -21,5 +21,5 @@ public interface UserService {
 
     void update(Long userId, UserDto userDto);
 
-    List<User> findTop10RecentCustomers();
+    List<UserDto> findTop10RecentCustomers();
 }
