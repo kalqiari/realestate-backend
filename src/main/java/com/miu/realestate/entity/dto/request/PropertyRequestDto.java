@@ -7,26 +7,26 @@ import java.util.Date;
 @Data
 public class PropertyRequestDto {
     private Long id;
-    private Long user_id;
-    private String street_address;
+    private Long userId;
+    private String streetAddress;
     private String address2;
     private String city;
     private String state;
     private String zipcode;
     private String propertyStatus;
-    private String listing_type;
+    private String listingType;
     private String description;
     private double price;
-    private String home_type;
+    private String homeType;
     private double sqFt;
     private int bedrooms;
     private double bathrooms;
     private boolean pool;
-    private String parking_type;
-    private int parking_spaces;
+    private String parkingType;
+    private int parkingSpaces;
     private String floorType;
-    private Date year_built;
-    private boolean is_built_complete;
-    private Date listed_at;
-    private Date deleted_at;
+    private Date yearBuilt;
+    private boolean isBuiltComplete;
+    private Date listedAt;
+    private Date deletedAt;
 }

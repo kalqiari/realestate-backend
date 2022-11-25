@@ -34,8 +34,10 @@ public class PropertyController {
 
     @RolesAllowed("owner")
     @PostMapping
-    public void save(@RequestBody PropertyDto propertyDto) {
-       propertyService.save(propertyDto);
+    public void save(@RequestBody PropertyDto propertyDto, Principal principal) {
+      var user= userService.findByUsername(principal.getName());
+        propertyDto.setUserId(user.getId());
+        propertyService.save(propertyDto);
     }
 
     @GetMapping
