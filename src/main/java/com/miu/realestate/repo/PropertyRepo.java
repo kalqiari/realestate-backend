@@ -33,7 +33,8 @@ public interface PropertyRepo extends CrudRepository<Property, Long> {
 
     List<Property> findByState(String input);
 
-    List<Property> findByPriceLessThan(String input);
 
     List<Property> findByZipcode(String input);
+
+    List<Property> findByPriceLessThan(double input);
 }

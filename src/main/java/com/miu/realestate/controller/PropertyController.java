@@ -43,7 +43,6 @@ public class PropertyController {
     @GetMapping
     public List<PropertyDto> getAll(Principal principal,
                                     @RequestParam(value = "favorite", required = false) Boolean favorite, @RequestParam(value = "filter", required = false) String criteria, @RequestParam(value = "input", required = false) String input )
-//                                    ,@RequestParam(value = "user_id", required = false) Long userId)
     {
        if(principal != null) {
            var user = userService.findByUsername(principal.getName());

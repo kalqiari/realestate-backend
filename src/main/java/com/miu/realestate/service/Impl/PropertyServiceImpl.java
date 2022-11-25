@@ -1,4 +1,4 @@
-package com.miu.realestate.service.Impl;
+package com.miu.realestate.service.impl;
 
 import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.User;
@@ -160,10 +160,18 @@ public class PropertyServiceImpl implements PropertyService {
         {
             properties  = propertyRepo.findByState(input);
         }else if(criteria.equals("price")){
-            properties  = propertyRepo.findByPriceLessThan(input);
+            properties  = propertyRepo.findByPriceLessThan(Double.parseDouble(input));
         }
         else if(criteria.equals("zipcode")){
             properties  = propertyRepo.findByZipcode(input);
+        }
+        else if(criteria.equals("numberOfRooms"))
+        {
+            properties  = propertyRepo.findByBedrooms(Integer.parseInt(input));
+        }
+        else if(criteria.equals("homeType"))
+        {
+            properties  = propertyRepo.findByHomeType(input);
         }
         else {
             properties  = propertyRepo.findAll();
