@@ -21,5 +21,6 @@ public class ApplicationDto {
     private Date createdAt;
     private Date reviewedAt;
     private Date deletedAt;
+    private PropertyDto property;
 
 }

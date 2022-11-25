@@ -2,9 +2,11 @@ package com.miu.realestate.entity.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {
@@ -19,4 +21,7 @@ public class UserDto {
     private String city;
     private String state;
     private String zipcode;
-}
+    private boolean status;
+    private Long roleId;
+
+  }

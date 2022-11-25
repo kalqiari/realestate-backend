@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface UserService {
 
-    List<User> findAll();
+    List<UserDto> findAll();
 
-    User findById(Long id);
+    UserDto findById(Long id);
 
     UserDto findByIdDto(Long id);
 
-    void deleteById(Long id);
+   public void deleteById(Long id);
 
 //    List<UserDto> findByRole(Role role);
 
@@ -21,5 +21,7 @@ public interface UserService {
 
     void update(Long userId, UserDto userDto);
 
-    List<User> findTop10RecentCustomers();
+    List<UserDto> findTop10RecentCustomers();
+
+    UserDto findByUsername(String username);
 }

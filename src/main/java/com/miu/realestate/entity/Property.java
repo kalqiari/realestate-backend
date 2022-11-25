@@ -52,9 +52,6 @@ public class Property {
     @JsonFormat(pattern="dd/MM/yyyy")
     private Date soldRentedAt;
 
-    @ManyToOne
-    private User owner;
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private User user;
 

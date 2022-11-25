@@ -1,4 +1,4 @@
-package com.miu.realestate.service.Impl;
+package com.miu.realestate.service.impl;
 
 import com.miu.realestate.entity.Favorite;
 import com.miu.realestate.entity.dto.response.FavoriteDto;
@@ -45,5 +45,20 @@ public class FavoriteServiceImpl implements FavoriteService {
     @Override
     public void deleteById(Long id) {
         favoriteRepo.deleteById(id);
+    }
+
+    @Override
+    public FavoriteDto findByPropertyIdAndUserId(Long id, Long user_id) {
+       var favorites = favoriteRepo.findByPropertyIdAndUserId(id, user_id);
+       if(favorites.size() > 0) {
+           return modelMapper.map(favorites.get(0), FavoriteDto.class);
+       }else{
+           return null;
+       }
+    }
+
+    @Override
+    public void deleteByPropertyIdAndUserId(Long propertyId, Long userID) {
+        favoriteRepo.deleteByPropertyIdAndUserId(propertyId, userID);
     }
 }

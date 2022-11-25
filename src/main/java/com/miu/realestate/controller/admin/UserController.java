@@ -5,13 +5,11 @@ import com.miu.realestate.entity.User;
 import com.miu.realestate.entity.dto.response.UserDto;
 import com.miu.realestate.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
-import javax.ws.rs.Path;
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("api/v1/users")
 public class UserController {
@@ -22,27 +20,27 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RolesAllowed("admin")
+
     @GetMapping()
-    public List<User> getUsers() {
+    public List<UserDto> getUsers() {
         return userService.findAll();
     }
 
     @RolesAllowed("admin")
     @GetMapping("/{id}")
     public UserDto getUser(@PathVariable("id") Long id){
+
         return userService.findByIdDto(id);
     }
 
     @RolesAllowed("admin")
-    @PutMapping("/activateDeactivateUser")
-    public void activateDeactivateUser(@PathVariable Long id ){
+    @PutMapping("/activateDeactivateUser/{id}")
+    public void activateDeactivateUser(@PathVariable Long id, @RequestBody UserDto userDto ){
         var user = userService.findById(id);
-        if(!user.isStatus()){
-            user.setStatus(true);
-        }else{
-            user.setStatus(false);
-        }
+
+        user.setStatus(userDto.isStatus());
+        userService.save(user);
+
     }
 
     @RolesAllowed("admin")
@@ -63,9 +61,9 @@ public class UserController {
         userService.update(userId, userDto);
     }
 
-    @RolesAllowed("admin")
+
     @GetMapping("/top10RecentCustomers")
-    public List<User>findRecentCustomers(){
+    public List<UserDto> findRecentCustomers(){
         return userService.findTop10RecentCustomers();
     }
 }

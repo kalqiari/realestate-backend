@@ -24,4 +24,6 @@ public interface PropertyService {
     List <PropertyDto> findPropertyByPrice(double price);
 
     List<PropertyDto> findPropertyByHomeType(String homeType);
+
+    List<PropertyDto> findPropertiesFavoriteByUserId(Long id);
 }

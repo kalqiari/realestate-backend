@@ -9,9 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/v1/applications")
 public class ApplicationController {
@@ -27,7 +28,7 @@ public class ApplicationController {
        applicationService.save(applicationDto);
     }
 
-    @RolesAllowed("owner")
+    @RolesAllowed({"owner", "customer"})
     @GetMapping
     public List<ApplicationDto> getAll() {
         return applicationService.getAll();
