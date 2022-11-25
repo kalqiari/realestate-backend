@@ -4,6 +4,7 @@ import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.dto.request.ApplicationRequestDto;
 import com.miu.realestate.entity.dto.response.ApplicationDto;
 import com.miu.realestate.service.ApplicationService;
+import com.miu.realestate.service.PropertyService;
 import com.miu.realestate.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.security.RolesAllowed;
 import java.security.Principal;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 @CrossOrigin("*")
 @RestController
@@ -22,11 +22,13 @@ public class ApplicationController {
 
     private  ApplicationService applicationService;
     private UserService userService;
+    private PropertyService propertyService;
     private ModelMapper modelMapper;
     @Autowired
-    public ApplicationController(ApplicationService applicationService, UserService userService, ModelMapper modelMapper) {
+    public ApplicationController(ApplicationService applicationService, UserService userService, PropertyService propertyService, ModelMapper modelMapper) {
         this.applicationService = applicationService;
         this.userService = userService;
+        this.propertyService = propertyService;
         this.modelMapper = modelMapper;
     }
     @RolesAllowed("customer")
@@ -60,10 +62,34 @@ public class ApplicationController {
     public void delete(@PathVariable Long id) {
         applicationService.delete(id);
     }
-
+    @RolesAllowed("owner")
     @PutMapping("/{id}")
     public void update(@PathVariable("id") Long application_id, @RequestBody ApplicationDto applicationDto) {
         applicationService.update(application_id, applicationDto);
+    }
+    @RolesAllowed("owner")
+    @PutMapping("/{id}/accept")
+    public void accept(@PathVariable("id") Long application_id) {
+        var a = applicationService.getById(application_id);
+        a.setReviewStatus("Accepted");
+       var app = applicationMapper(a);
+        var property = a.getProperty();
+        property.setStatus("Contingent");
+        a.setProperty(null);
+        propertyService.save(property);
+        applicationService.save(app);
+    }
+
+    @RolesAllowed("owner")
+    @PutMapping("/{id}/reject")
+    public void reject(@PathVariable("id") Long application_id) {
+        var a = applicationService.getById(application_id);
+        a.setReviewStatus("Rejected");
+        var app = applicationMapper(a);
+        var property = a.getProperty();
+        property.setStatus("Available");
+        propertyService.save(property);
+        applicationService.save(app);
     }
     @RolesAllowed("owner")
     @GetMapping("/filterBySubmissionDate")
@@ -82,4 +108,18 @@ public class ApplicationController {
         return applicationService.findApplicationByProperty(property);
     }
 
+    private ApplicationRequestDto applicationMapper(ApplicationDto a)
+    {
+        ApplicationRequestDto app = new ApplicationRequestDto();
+        app.setId(a.getId());
+        app.setApplicationType(a.getApplicationType());
+        app.setCreatedAt(a.getCreatedAt());
+        app.setUserId(a.getUser().getId());
+        app.setReviewStatus(a.getReviewStatus());
+        app.setMessage(a.getMessage());
+        app.setEmploymentInfo(a.getEmploymentInfo());
+        app.setPropertyId(a.getPropertyId());
+        app.setReviewedAt(LocalDate.now());
+        return app;
+    }
 }

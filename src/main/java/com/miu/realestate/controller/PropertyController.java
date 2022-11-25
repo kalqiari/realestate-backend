@@ -57,8 +57,19 @@ public class PropertyController {
     }
 
     @GetMapping("/{id}")
-    public PropertyDto getById(@PathVariable Long id) {
-        return propertyService.getById(id);
+    public PropertyDto getById(@PathVariable Long id,Principal principal ) {
+
+        var p =  propertyService.getById(id);
+        if(principal != null && p != null ) {
+
+            var user = userService.findByUsername(principal.getName());
+            if(user.getRoleId() == 3) {
+                p.setViews(p.getViews() + 1);
+                propertyService.save(p);
+            }
+        }
+
+        return p;
     }
     @RolesAllowed("customer")
     @PutMapping("/{property_id}/favoriteToggle")
@@ -100,7 +111,7 @@ public class PropertyController {
     @RolesAllowed("owner")
     @DeleteMapping("/{id}")
     public void unList(@PathVariable Long id) {
-        PropertyDto property = getById(id);
+        PropertyDto property = propertyService.getById(id);
         if(property!=null && !(property.getStatus().equalsIgnoreCase("pending"))){
             propertyService.delete(id);
         }

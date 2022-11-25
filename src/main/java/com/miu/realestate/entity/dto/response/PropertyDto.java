@@ -34,4 +34,5 @@ public class PropertyDto {
     private Date deletedAt;
     private String status;
     private List<PhotoDto> photos;
+    private int views;
 }

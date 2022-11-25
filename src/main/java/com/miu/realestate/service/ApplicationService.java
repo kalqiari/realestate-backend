@@ -30,4 +30,5 @@ public interface ApplicationService {
     List<ApplicationDto> findByUserID(Long userId);
 
     List<ApplicationDto> findByOwnerId(Long ownerId);
+
 }

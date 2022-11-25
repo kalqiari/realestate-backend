@@ -36,7 +36,10 @@ public class Property {
     private String parkingType;
     private int parkingSpaces;
     private String floorType;
+    @Column(columnDefinition = "varchar(255) default 'Available'")
     private String status;
+    @Column(columnDefinition = "integer default 0")
+    private int views;
 
     @JsonFormat(pattern="dd/MM/yyyy")
     private Date yearBuilt;

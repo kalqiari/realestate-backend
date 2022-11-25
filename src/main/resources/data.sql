@@ -36,13 +36,13 @@ INSERT INTO USERS (id,username, first_name, last_name, email, phone_number, stre
 VALUES (1236, 'kprince','Keven', 'prince', 'kprince@miu.edu', 'miu', 'fairfield', 'fairfield', 'iowa', 'US', 52557, '1990-10-01', '1990-10-01', '1990-10-01',3, true );
 
 --PROPERTY
-INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at )
-VALUES(21, 1236, '23W 1st St','Curry Lane','Beverly Hills', 'CA', '23089', 'Sale','beautiful mansion by the sea',43000000, 'mansion', 10056,10, 13, true, 'open parking space', 6, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01' );
+INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at, status )
+VALUES(21, 2, '23W 1st St','Curry Lane','Beverly Hills', 'CA', '23089', 'Sale','beautiful mansion by the sea',43000000, 'mansion', 10056,10, 13, true, 'open parking space', 6, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01', 'Pending' );
 
-INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at )
-VALUES(22, 3, '231N 1st St','KKK Lane','Beverly Hills', 'CA', '23089', 'Sale','beautiful mansion by the sea',12000000, 'mansion', 81056,8, 9.5, true, 'open parking space', 3, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01');
+INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at, status )
+VALUES(22, 2, '231N 1st St','KKK Lane','Beverly Hills', 'CA', '23089', 'Sale','beautiful mansion by the sea',12000000, 'mansion', 81056,8, 9.5, true, 'open parking space', 3, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01', 'Pending');
 
-INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at )
+INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at)
 VALUES(23, 1235, '23W 1st St','Curry Lane','Beverly Hills', 'CA', '23089', 'Sale','beautiful mansion by the sea',43000000, 'mansion', 10056,10, 13, true, 'open parking space', 6, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01' );
 
 INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at )
@@ -52,7 +52,7 @@ INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode
 VALUES(25, 2, '23W 1st St','Curry Lane','Beverly Hills', 'CA', '23089', 'Sale','beautiful mansion by the sea',43000000, 'mansion', 10056,10, 13, true, 'open parking space', 6, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01' );
 
 INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at )
-VALUES(26, 2, '231N 1st St','KKK Lane','Beverly Hills', 'CA', '23089', 'Rent','beautiful mansion by the sea',12000000, 'mansion', 81056,8, 9.5, true, 'open parking space', 3, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01');
+VALUES(26, 1236, '231N 1st St','KKK Lane','Beverly Hills', 'CA', '23089', 'Rent','beautiful mansion by the sea',12000000, 'mansion', 81056,8, 9.5, true, 'open parking space', 3, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01');
 
 INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at )
 VALUES(27, 2, '23W 1st St','Curry Lane','Beverly Hills', 'CA', '23089', 'Rent','beautiful mansion by the sea',43000000, 'mansion', 10056,10, 13, true, 'open parking space', 6, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01' );
@@ -79,10 +79,10 @@ INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode
 VALUES(34, 2, '231N 1st St','KKK Lane','Beverly Hills', 'CA', '23089', 'Sale','beautiful mansion by the sea',12000000, 'mansion', 81056,8, 9.5, true, 'open parking space', 3, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01');
 
 INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at )
-VALUES(35, 2, '23W 1st St','Curry Lane','Beverly Hills', 'CA', '23089', 'Rent','beautiful mansion by the sea',43000000, 'mansion', 10056,10, 13, true, 'open parking space', 6, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01' );
+VALUES(35, 1236, '23W 1st St','Curry Lane','Beverly Hills', 'CA', '23089', 'Rent','beautiful mansion by the sea',43000000, 'mansion', 10056,10, 13, true, 'open parking space', 6, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01' );
 
 INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at )
-VALUES(36, 2, '231N 1st St','KKK Lane','Beverly Hills', 'CA', '23089', 'Sale','beautiful mansion by the sea',12000000, 'mansion', 81056,8, 9.5, true, 'open parking space', 3, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01');
+VALUES(36, 1236, '231N 1st St','KKK Lane','Beverly Hills', 'CA', '23089', 'Sale','beautiful mansion by the sea',12000000, 'mansion', 81056,8, 9.5, true, 'open parking space', 3, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01');
 
 -- APPLICATION
 
@@ -158,4 +158,3 @@ VALUES(12, 3, 21, 'can i pass by on Wednesday afternoon to tour the apartment?',
 
 INSERT INTO QUESTION (id,user_id, property_id, content, created_at)
 VALUES(13, 3, 22, 'Oops! never mind, i am not interested anymore...', '2021-01-12');
-

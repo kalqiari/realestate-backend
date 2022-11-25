@@ -20,6 +20,7 @@ public class Application {
     private String applicationType;
     private String employmentInfo;
     private double creditScore;
+    @Column(columnDefinition = "varchar(255) default 'Pending'")
     private String reviewStatus;
     private String message;
     private LocalDate droppedAt;
