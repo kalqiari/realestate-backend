@@ -26,4 +26,6 @@ public interface PropertyRepo extends CrudRepository<Property, Long> {
     List<Property> findPropertyByHomeType(String homeType);
     @Query("select p from Property p join Favorite f on p= f.property where f.user.id = :id ")
     List<Property> findPropertiesFavoriteByUserId(Long id);
+   // @Query("select p from Property p join User u on p= u.properties where u.id = :id ")
+    List<Property> findPropertyByUserId(Long id);
 }
