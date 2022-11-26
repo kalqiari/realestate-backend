@@ -81,8 +81,8 @@ VALUES(34, 2, '231N 1st St','KKK Lane','Beverly Hills', 'CA', '23089', 'Sale','b
 INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at )
 VALUES(35, 1236, '23W 1st St','Curry Lane','Beverly Hills', 'CA', '23089', 'Rent','beautiful mansion by the sea',43000000, 'mansion', 10056,10, 13, true, 'open parking space', 6, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01' );
 
-INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at )
-VALUES(36, 1236, '231N 1st St','KKK Lane','Beverly Hills', 'CA', '23089', 'Sale','beautiful mansion by the sea',12000000, 'mansion', 81056,8, 9.5, true, 'open parking space', 3, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01');
+INSERT INTO PROPERTY(id, user_id, street_address, address2, city, state, zipcode, listing_type, description, price, home_type, sq_ft, bedrooms, bathrooms, pool, parking_type, parking_spaces, floor_type, year_built, is_built_complete, listed_at, deleted_at, property_status, status )
+VALUES(36, 1236, '231N 1st St','KKK Lane','Beverly Hills', 'CA', '23089', 'Sale','beautiful mansion by the sea',12000000, 'mansion', 81056,8, 9.5, true, 'open parking space', 3, 'wood', '1990-10-01', true, '1990-10-01', '1990-10-01', 'Rented', 'Contingent');
 
 -- APPLICATION
 
@@ -91,6 +91,10 @@ VALUES (100,3, 21, 'Rent' , 'unemployment', 300, 'Pending', '1990-10-01', '1990-
 
 INSERT INTO APPLICATION (id,user_id,property_id, application_type, employment_info, credit_score, review_status, dropped_at, created_at, reviewed_at, deleted_at)
 VALUES (200,3, 22, 'Buy' , 'employment', 700, 'Pending', '1990-10-01', '1990-10-01', '1990-10-01', '1990-10-01' );
+
+INSERT INTO APPLICATION (id,user_id,property_id, application_type, employment_info, credit_score, review_status, dropped_at, created_at, reviewed_at, deleted_at)
+VALUES (201,3, 36, 'Buy' , 'employment', 700, 'Accepted', '1990-10-01', '1990-10-01', '1990-10-01', '1990-10-01' );
+
 
 
 -- PHOTO
