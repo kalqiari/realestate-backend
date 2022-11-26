@@ -19,7 +19,7 @@ public interface PropertyRepo extends CrudRepository<Property, Long> {
 
     List<Property> findByHomeType(String type);
 
-    List <Property> findPropertyByPropertyStatus(String propertyStatus);
+    List <Property> findTop10ByPropertyStatusEqualsOrderBySoldRentedAt(String status);
 
     List <Property> findPropertyByPrice(double price);
 
