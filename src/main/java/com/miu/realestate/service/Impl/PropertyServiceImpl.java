@@ -1,4 +1,4 @@
-package com.miu.realestate.service.impl;
+package com.miu.realestate.service.Impl;
 
 import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.User;
@@ -99,13 +99,10 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public List<PropertyDto> findPropertyByLastTenRented (String propertyStatus) {
-        var property = propertyRepo.findPropertyByPropertyStatus(propertyStatus);
+    public List<PropertyDto> findPropertyByLastTenRented () {
+        var property = propertyRepo.findTop10ByPropertyStatusEqualsOrderBySoldRentedAt("rent");
         return property.stream()
-                .filter(status -> status.getPropertyStatus().equalsIgnoreCase("rented"))
-                .sorted((o1, o2) -> o2.getSoldRentedAt().compareTo(o1.getSoldRentedAt()))
                 .map(post -> modelMapper.map(post,PropertyDto.class))
-                .limit(10)
                 .collect(Collectors.toList());
     }
 

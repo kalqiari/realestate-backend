@@ -153,8 +153,8 @@ public class PropertyController {
     }
     @RolesAllowed("admin")
     @GetMapping("/findPropertyByPropertyStatus")
-    public List<PropertyDto> findPropertyByLastTenRented (@RequestParam("propertyStatus") String propertyStatus){
-        return propertyService.findPropertyByLastTenRented (propertyStatus);
+    public List<PropertyDto> findPropertyByLastTenRented(){
+        return propertyService.findPropertyByLastTenRented();
     }
     @RolesAllowed({"customer", "owner"})
     @GetMapping("/filterByPrice")
