@@ -15,7 +15,7 @@ INSERT INTO USERS (id,username, first_name,last_name,email,phone_number,street_a
 VALUES (1, 'admin', 'admin', 'admin', 'admin@email.com','(641)-123490','1000N 4th Street','FairwayApartments','Chicago', 'Illinois','53901','1990-10-01','1990-10-01', '1990-10-01', 1, true );
 
 INSERT INTO USERS (id,username, first_name,last_name,email,phone_number,street_address,address2,city,state,zipcode,deactivate_at,created_at,deleted_at, role_id, status)
-VALUES (2, 'owner', 'owner', 'owner', 'owner@email.com','(641)-123490','1000N 4th Street','FairwayApartments','Chicago', 'Illinois','53901','1990-10-01','1990-10-01', '1990-10-01', 2 , true);
+VALUES (2, 'owner', 'owner', 'owner', 'alqiari@hotmail.com','(641)-123490','1000N 4th Street','FairwayApartments','Chicago', 'Illinois','53901','1990-10-01','1990-10-01', '1990-10-01', 2 , true);
 
 INSERT INTO USERS (id,username, first_name,last_name,email,phone_number,street_address,address2,city,state,zipcode,deactivate_at,created_at,deleted_at, role_id, status)
 VALUES (3, 'customer', 'customer', 'customer', 'customer@email.com','(641)-123490','1000N 4th Street','FairwayApartments','Chicago', 'Illinois','53901','1990-10-01','1990-10-01', '1990-10-01', 3 , true);

@@ -1,9 +1,11 @@
 package com.miu.realestate.controller;
 
+import com.miu.realestate.entity.Email;
 import com.miu.realestate.entity.Property;
 import com.miu.realestate.entity.dto.request.ApplicationRequestDto;
 import com.miu.realestate.entity.dto.response.ApplicationDto;
 import com.miu.realestate.service.ApplicationService;
+import com.miu.realestate.service.EmailService;
 import com.miu.realestate.service.PropertyService;
 import com.miu.realestate.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -24,19 +26,31 @@ public class ApplicationController {
     private UserService userService;
     private PropertyService propertyService;
     private ModelMapper modelMapper;
+
+    private EmailService emailservice;
     @Autowired
-    public ApplicationController(ApplicationService applicationService, UserService userService, PropertyService propertyService, ModelMapper modelMapper) {
+    public ApplicationController(ApplicationService applicationService, UserService userService, PropertyService propertyService, ModelMapper modelMapper, EmailService emailservice) {
         this.applicationService = applicationService;
         this.userService = userService;
         this.propertyService = propertyService;
         this.modelMapper = modelMapper;
+        this.emailservice = emailservice;
     }
     @RolesAllowed("customer")
     @PostMapping
     public void save(@RequestBody ApplicationRequestDto applicationDto, Principal principal) {
         applicationDto.setUserId(userService.findByUsername(principal.getName()).getId());
         applicationDto.setCreatedAt(LocalDate.now());
-       applicationService.save(applicationDto);
+        applicationService.save(applicationDto);
+        var p = propertyService.getById(applicationDto.getPropertyId());
+        var u = userService.findById(p.getUserId());
+        Email email = new Email();
+        email.setTo(u.getEmail());
+        email.setFrom("testp34109@gmail.com");
+        email.setSubject("New Application");
+        email.setContent("Hi "+ u.getFirstName() +", You have new offer please check the website.");
+        emailservice.sendEmail(email);
+
     }
 
     @RolesAllowed({"owner", "customer"})
