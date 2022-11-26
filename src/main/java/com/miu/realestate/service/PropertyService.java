@@ -19,7 +19,7 @@ public interface PropertyService {
     List<PropertyDto> findAllByAddressStateAndAddressCity(String state, String city);
 
     List<PropertyDto> findAllByPropertyType(String type);
-    List <PropertyDto> findPropertyByLastTenRented (String propertyStatus);
+    List <PropertyDto> findPropertyByLastTenRented ();
 
     List <PropertyDto> findPropertyByPrice(double price);
 

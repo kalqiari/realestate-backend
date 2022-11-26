@@ -99,8 +99,8 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public List<PropertyDto> findPropertyByLastTenRented (String propertyStatus) {
-        var property = propertyRepo.findTop10ByPropertyStatusEqualsOrderBySoldRentedAt(propertyStatus);
+    public List<PropertyDto> findPropertyByLastTenRented () {
+        var property = propertyRepo.findTop10ByPropertyStatusEqualsOrderBySoldRentedAt("rent");
         return property.stream()
                 .map(post -> modelMapper.map(post,PropertyDto.class))
                 .collect(Collectors.toList());
