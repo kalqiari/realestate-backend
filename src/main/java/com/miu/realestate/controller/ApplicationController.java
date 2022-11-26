@@ -41,6 +41,7 @@ public class ApplicationController {
     public void save(@RequestBody ApplicationRequestDto applicationDto, Principal principal) {
         applicationDto.setUserId(userService.findByUsername(principal.getName()).getId());
         applicationDto.setCreatedAt(LocalDate.now());
+        applicationDto.setReviewStatus("Pending");
         applicationService.save(applicationDto);
         var p = propertyService.getById(applicationDto.getPropertyId());
         var u = userService.findById(p.getUserId());
@@ -89,6 +90,11 @@ public class ApplicationController {
        var app = applicationMapper(a);
         var property = a.getProperty();
         property.setStatus("Contingent");
+       if( a.getApplicationType().equals("Rent"))
+           property.setPropertyStatus("Rented");
+       else
+           property.setPropertyStatus("Sold");
+
         a.setProperty(null);
         propertyService.save(property);
         applicationService.save(app);

@@ -20,7 +20,7 @@ public class UserController {
         this.userService = userService;
     }
 
-
+    @RolesAllowed("admin")
     @GetMapping()
     public List<UserDto> getUsers() {
         return userService.findAll();
@@ -60,8 +60,7 @@ public class UserController {
     public void update(@PathVariable("id") Long userId, @RequestBody UserDto userDto) {
         userService.update(userId, userDto);
     }
-
-
+    @RolesAllowed("admin")
     @GetMapping("/top10RecentCustomers")
     public List<UserDto> findRecentCustomers(){
         return userService.findTop10RecentCustomers();

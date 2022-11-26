@@ -113,7 +113,7 @@ public class PropertyController {
     @DeleteMapping("/{id}")
     public void unList(@PathVariable Long id) {
         PropertyDto property = propertyService.getById(id);
-        if(property!=null && !(property.getStatus().equalsIgnoreCase("pending"))){
+        if(property != null && !property.getStatus().equals("Pending")){
             propertyService.delete(id);
         }
     }
